@@ -65,6 +65,67 @@ Copie le contenu d'une entrée existante comme modèle. Les champs utiles :
   boutons de téléchargement. Dépose les fichiers dans `files/`.
 - `excerpt:` — le résumé d'une ligne affiché dans la liste.
 
+## Le style LaTeX
+
+Le site utilise un thème maison qui le fait ressembler à un article LaTeX. Il
+s'active par une seule ligne dans `_config.yml` :
+
+```yaml
+site_theme               : "latex"
+```
+
+Remets `"default"` (ou `"air"`, `"mint"`…) et tu retrouves l'apparence
+d'origine du template — rien d'autre à changer.
+
+Trois fichiers portent ce thème :
+
+| Fichier                          | Rôle                                          |
+|----------------------------------|-----------------------------------------------|
+| `_sass/theme/_latex_light.scss`  | polices et couleurs, version claire           |
+| `_sass/theme/_latex_dark.scss`   | les mêmes, version sombre                     |
+| `_sass/layout/_latex.scss`       | la mise en page (justification, numérotation…)|
+
+**Attention :** les deux fichiers de thème définissent tous les deux les
+polices, et le sombre est importé après le clair. Si tu changes de police,
+change-la dans les *deux*, sinon tu obtiendras un résultat incohérent.
+
+### La police
+
+**Latin Modern**, celle qu'utilise LaTeX par défaut. Les fichiers sont dans
+`assets/fonts/` plutôt que chargés depuis un CDN : le site reste autonome et
+aucune requête n'est envoyée à un tiers quand quelqu'un visite la page. La
+licence est rappelée dans `assets/fonts/README.md`.
+
+### La numérotation des sections
+
+Les titres `##` d'une page sont numérotés 1, 2, 3 et les `###` en 1.1, 1.2,
+comme `\section` et `\subsection`. C'est fait avec des compteurs CSS, donc
+la numérotation se met à jour toute seule quand tu ajoutes ou déplaces une
+section.
+
+Elle ne touche que les titres qui sont des enfants *directs* du contenu —
+c'est pourquoi les titres d'articles sur `/publications/` ne sont pas
+numérotés, alors que les intitulés de catégorie le sont.
+
+Pour désactiver la numérotation sur une page, ajoute dans son en-tête YAML :
+
+```yaml
+unnumbered: true
+```
+
+### Les retraits de paragraphe
+
+Comme dans LaTeX, un paragraphe qui en suit un autre commence par un retrait
+au lieu d'être séparé par une ligne blanche. Si tu préfères l'inverse, mets
+`$paragraph-indent` à `false` dans les **deux** fichiers de thème.
+
+### Les titres de section dans le Markdown
+
+Écris-les avec `##` et `###`, pas avec les soulignements `======` du template
+d'origine : ceux-ci produisent des `<h1>`, ce qui donne plusieurs titres de
+premier niveau par page (mauvais pour l'accessibilité et le référencement) et
+casse la numérotation.
+
 ## Prévisualiser en local
 
 Le site se compile dans Docker, donc rien à installer côté Ruby.
