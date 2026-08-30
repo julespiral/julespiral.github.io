@@ -1,0 +1,15 @@
+---
+layout: archive
+title: "Communications"
+permalink: /fr/communications/
+lang: fr
+alt_lang_url: /talks/
+author_profile: true
+---
+
+{% include base_path %}
+
+{% for post in site.talks reversed %}
+  {% if post.lang != 'fr' %}{% continue %}{% endif %}
+  {% include archive-single-talk.html %}
+{% endfor %}

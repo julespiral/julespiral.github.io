@@ -1,0 +1,15 @@
+---
+layout: archive
+title: "Enseignement"
+permalink: /fr/enseignement/
+lang: fr
+alt_lang_url: /teaching/
+author_profile: true
+---
+
+{% include base_path %}
+
+{% for post in site.teaching reversed %}
+  {% if post.lang != 'fr' %}{% continue %}{% endif %}
+  {% include archive-single.html %}
+{% endfor %}

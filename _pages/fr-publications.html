@@ -1,0 +1,32 @@
+---
+layout: archive
+title: "Publications"
+permalink: /fr/publications/
+lang: fr
+alt_lang_url: /publications/
+author_profile: true
+---
+
+{% include base_path %}
+
+{% if site.author.googlescholar %}
+  <div class="wordwrap">Mes articles sont aussi listés sur <a href="{{site.author.googlescholar}}">mon profil Google Scholar</a>.</div>
+{% endif %}
+
+{% comment %}
+  Même logique que la version anglaise, mais on filtre `lang: fr` et on
+  utilise le titre français de la catégorie (`title_fr` dans _config.yml).
+{% endcomment %}
+{% for category in site.publication_category %}
+  {% assign title_shown = false %}
+  {% for post in site.publications reversed %}
+    {% if post.category != category[0] or post.lang != 'fr' %}
+      {% continue %}
+    {% endif %}
+    {% unless title_shown %}
+      <h2>{{ category[1].title_fr | default: category[1].title }}</h2><hr />
+      {% assign title_shown = true %}
+    {% endunless %}
+    {% include archive-single.html %}
+  {% endfor %}
+{% endfor %}

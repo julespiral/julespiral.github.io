@@ -1,0 +1,57 @@
+{% include base_path %}
+
+{% comment %}
+  Barre de navigation bilingue.
+
+  - `page.lang` (déclaré dans l'en-tête YAML de chaque page) vaut "fr" ou "en".
+  - Le menu affiché vient de _data/navigation.yml : la liste `fr` ou la liste `main`.
+  - `page.alt_lang_url` pointe vers la même page dans l'autre langue ; le bouton
+    EN/FR à droite du menu s'appuie dessus. Si une page n'a pas d'équivalent,
+    omets `alt_lang_url` et le bouton ne s'affiche pas.
+{% endcomment %}
+
+{% if page.lang == 'fr' %}
+  {% assign nav_links = site.data.navigation.fr %}
+  {% assign home_url = '/fr/' %}
+  {% assign alt_lang_label = 'EN' %}
+  {% assign alt_lang_title = 'Read this page in English' %}
+{% else %}
+  {% assign nav_links = site.data.navigation.main %}
+  {% assign home_url = '/' %}
+  {% assign alt_lang_label = 'FR' %}
+  {% assign alt_lang_title = 'Lire cette page en français' %}
+{% endif %}
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <button><span class="navicon"></span></button>
+        <ul class="visible-links">
+          <li class="masthead__menu-item masthead__menu-item--lg persist {% if page.url == home_url %}selected{% endif %}">
+            <a href="{{ base_path }}{{ home_url }}">{{ site.title }}</a>
+          </li>
+          {% for link in nav_links %}
+            {% if link.url contains 'http' %}
+              {% assign domain = '' %}
+            {% else %}
+              {% assign domain = base_path %}
+            {% endif %}
+            <li class="masthead__menu-item {% if page.url contains link.url and link.url != '/' %}selected{% endif %}">
+              <a href="{{ domain }}{{ link.url }}">{{ link.title }}</a>
+            </li>
+          {% endfor %}
+          {% if page.alt_lang_url %}
+            <li class="masthead__menu-item persist">
+              <a href="{{ base_path }}{{ page.alt_lang_url }}" title="{{ alt_lang_title }}" hreflang="{% if page.lang == 'fr' %}en{% else %}fr{% endif %}">{{ alt_lang_label }}</a>
+            </li>
+          {% endif %}
+          <li id="theme-toggle" class="masthead__menu-item persist tail">
+            <a role="button" aria-labelledby="theme-icon"><i id="theme-icon" class="fa-solid fa-sun" aria-hidden="true" title="toggle theme"></i></a>
+          </li>
+        </ul>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>

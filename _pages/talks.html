@@ -1,0 +1,15 @@
+---
+layout: archive
+title: "Talks and presentations"
+permalink: /talks/
+lang: en
+alt_lang_url: /fr/communications/
+author_profile: true
+---
+
+{% include base_path %}
+
+{% for post in site.talks reversed %}
+  {% if post.lang != 'en' %}{% continue %}{% endif %}
+  {% include archive-single-talk.html %}
+{% endfor %}
