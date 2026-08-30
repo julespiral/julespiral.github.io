@@ -8,7 +8,7 @@
 
 # Basic Site Settings
 locale                   : "en-US"
-site_theme               : "default" # The available themes options are "default", "air", "sunrise", "mint", "dirt" and "contrast"
+site_theme               : "latex" # Options : "latex" (le nôtre), "default", "air", "sunrise", "mint", "dirt", "contrast"
 title                    : "Jules Piral"
 title_separator          : "-"
 name                     : &name "Jules Piral"

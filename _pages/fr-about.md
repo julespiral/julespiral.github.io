@@ -10,15 +10,13 @@ Je suis étudiant à la maîtrise en science politique à l'Université Laval, �
 
 Mes recherches se situent à la rencontre du **comportement politique** et de l'**opinion publique**, avec un ancrage dans la **politique québécoise et canadienne** et un intérêt croissant pour l'**activisme et les mouvements sociaux**. Sur le plan méthodologique, je travaille avec des outils quantitatifs et computationnels : données de sondage, analyse textuelle automatisée et grands modèles de langage appliqués au texte politique.
 
-Thèmes de recherche
-======
+## Thèmes de recherche
 * Politique québécoise et canadienne
 * Comportement politique et opinion publique
 * Activisme et mouvements sociaux
 * Analyse textuelle computationnelle et grands modèles de langage en science politique
 
-Travaux en cours
-======
+## Travaux en cours
 Je suis auxiliaire de recherche dans plusieurs centres de l'Université Laval :
 
 * **Datagotchi Chatbot** (CLESSN) — communication et vulgarisation de l'outil.
@@ -29,6 +27,5 @@ Deux articles sont en cours de rédaction, tous deux sur l'usage des grands mod�
 
 J'enseigne également comme auxiliaire en méthodologie quantitative et en structuration de la recherche, et j'anime un atelier d'initiation à **R** dans le cadre de l'École interdisciplinaire outils et méthodes (EIOM) de l'Université Laval.
 
-Contact
-======
+## Contact
 Le plus simple est de m'écrire à [jules.piral.1@ulaval.ca](mailto:jules.piral.1@ulaval.ca).

@@ -13,15 +13,13 @@ I am an M.A. student in political science at Université Laval, in Québec City,
 
 My research sits at the intersection of **political behaviour** and **public opinion**, with a regional focus on **Quebec and Canadian politics** and a growing interest in **activism and social movements**. Methodologically, I work with quantitative and computational tools — survey data, automated text analysis, and large language models applied to political text.
 
-Research interests
-======
+## Research interests
 * Quebec and Canadian politics
 * Political behaviour and public opinion
 * Activism and social movements
 * Computational text analysis and large language models in political science
 
-Current work
-======
+## Current work
 I hold research assistantships across several centres at Université Laval:
 
 * **Datagotchi Chatbot** (CLESSN) — outreach and science communication for the tool.
@@ -32,6 +30,5 @@ Two papers are currently in preparation, both on the use of large language model
 
 I also teach as a graduate assistant in quantitative methods and research design, and I lead an introductory **R** workshop at Université Laval's interdisciplinary methods school (EIOM).
 
-Contact
-======
+## Contact
 The fastest way to reach me is by email at [jules.piral.1@ulaval.ca](mailto:jules.piral.1@ulaval.ca).

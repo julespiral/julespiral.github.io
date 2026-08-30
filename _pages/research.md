@@ -9,15 +9,13 @@ author_profile: true
 
 {% include base_path %}
 
-Research interests
-======
+## Research interests
 * **Quebec and Canadian politics**
 * **Political behaviour and public opinion**
 * **Activism and social movements**
 * **Computational methods** — automated text analysis, large language models applied to political text
 
-Research positions
-======
+## Research positions
 
 **Datagotchi Chatbot** — *Research assistant*, CLESSN, Université Laval
 <br/>July 2026 – present
@@ -39,8 +37,7 @@ Research positions
 <br/>June 2025 – November 2025
 <br/>Systematic literature review using Covidence.
 
-Research affiliations
-======
+## Research affiliations
 * **CAPP** — Centre d'analyse des politiques publiques
 * **CLESSN** — Chaire de leadership en enseignement des sciences sociales numériques
 * **CÉCD** — Centre pour l'étude de la citoyenneté démocratique

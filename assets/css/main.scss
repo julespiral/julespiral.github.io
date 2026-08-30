@@ -35,5 +35,9 @@
     "layout/page",
     "layout/archive",
     "layout/sidebar",
-    "layout/json_cv"
+    "layout/json_cv",
+
+    // Mise en page « article LaTeX » — doit rester en dernier :
+    // ces règles surchargent celles du thème d'origine.
+    "layout/latex"
 ;

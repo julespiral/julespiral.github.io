@@ -9,15 +9,13 @@ author_profile: true
 
 {% include base_path %}
 
-Thèmes de recherche
-======
+## Thèmes de recherche
 * **Politique québécoise et canadienne**
 * **Comportement politique et opinion publique**
 * **Activisme et mouvements sociaux**
 * **Méthodes computationnelles** — analyse textuelle automatisée, grands modèles de langage appliqués au texte politique
 
-Expérience de recherche
-======
+## Expérience de recherche
 
 **Projet Datagotchi Chatbot** — *Auxiliaire de recherche*, CLESSN, Université Laval
 <br/>Juillet 2026 – en cours
@@ -39,8 +37,7 @@ Expérience de recherche
 <br/>Juin 2025 – novembre 2025
 <br/>Revue de littérature systématique à l'aide de Covidence.
 
-Affiliations de recherche
-======
+## Affiliations de recherche
 * **CAPP** — Centre d'analyse des politiques publiques
 * **CLESSN** — Chaire de leadership en enseignement des sciences sociales numériques
 * **CÉCD** — Centre pour l'étude de la citoyenneté démocratique
