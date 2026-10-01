@@ -8,7 +8,7 @@ alt_lang_url: /publications/silicon-sampling-canada
 date: 2026-07-25
 status: "Manuscrit en cours de rédaction"
 excerpt: "Les grands modèles de langage reproduisent-ils les mécanismes théoriques du choix de vote, ou seulement des stéréotypes absorbés à l'entraînement ? Un test sur l'Étude électorale canadienne."
-citation: 'Piral, Jules et Laurence-Olivier M. Foisy. «&nbsp;Silicon Sampling and Voting Behaviour in Canada: Theory or Anarchy?&nbsp;». Manuscrit en cours de rédaction.'
+citation: 'Piral, Jules, Laurence-Olivier M. Foisy et Yannick Dufresne. «&nbsp;Silicon Sampling and Voting Behaviour in Canada: Theory or Anarchy?&nbsp;». Manuscrit en cours de rédaction.'
 ---
 
 Les données granulaires sur les citoyens sont partout, et les grands modèles de langage (GML) peuvent désormais répondre à des questions de sondage à leur place, pour un coût négligeable — une pratique appelée **silicon sampling**. La combinaison promet beaucoup à la science politique et fait courir un risque réel à la politique démocratique. Pour les chercheurs, elle permet de combler des données manquantes, de réduire les coûts de terrain et d'atteindre des populations difficiles à sonder ; pour les stratèges politiques, elle permet de tester du microciblage sur des électorats simulés à une fraction du coût et du temps habituels.

@@ -8,7 +8,7 @@ alt_lang_url: /fr/publications/echantillonnage-silicium-canada
 date: 2026-07-25
 status: "Manuscript in preparation"
 excerpt: "Do large language models reproduce the theoretical mechanisms underlying vote choice, or merely stereotypes absorbed during training? A test on the Canadian Election Study."
-citation: 'Piral, Jules, and Laurence-Olivier M. Foisy. &quot;Silicon Sampling and Voting Behaviour in Canada: Theory or Anarchy?&quot; Manuscript in preparation.'
+citation: 'Piral, Jules, Laurence-Olivier M. Foisy, and Yannick Dufresne. &quot;Silicon Sampling and Voting Behaviour in Canada: Theory or Anarchy?&quot; Manuscript in preparation.'
 ---
 
 Granular data on citizens is everywhere, and large language models (LLMs) can now answer survey questions on their behalf at negligible cost — a practice known as **silicon sampling**. The combination promises much for political science and risks much for democratic politics. For scholars, it can fill missing data, cut fieldwork costs, and reach hard-to-survey populations; for political operatives, it can pre-test microtargeting on simulated electorates at a fraction of the cost and time.
