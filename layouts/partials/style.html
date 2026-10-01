@@ -1,0 +1,69 @@
+<style>
+/* Adapté de buchh.org (MIT, Jonathan Buchholz). Couleurs : fond crème. */
+:root {
+  --bg: #FAF7F0;
+  --fg: #1A1A1A;
+  --muted: #5C5A55;
+  --rule: #1A1A1A;
+}
+html { background: var(--bg); }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  padding: 20px;
+  line-height: 1.6;
+  overflow-y: scroll;
+  font-size: 1.15em;
+}
+.limiter, main {
+  max-width: 640px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+a { color: var(--fg); }
+p { text-align: justify; }
+blockquote { font-style: italic; }
+h1:first-child { margin-top: 0; }
+h1, h2, h3 {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-weight: normal;
+  line-height: 1.25;
+  border-bottom: 1px solid;
+  margin-bottom: 0;
+}
+h3 { border-bottom: 0; font-style: italic; margin-top: 1.2em; }
+h1::before { content: "✱ "; margin-bottom: 0.5rem; }
+hr { height: 1px; background: var(--rule); border: 0; }
+img { border-radius: 5px; }
+small, .muted { color: var(--muted); }
+.inline-image {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+.inline-image img { max-width: 175px; height: 175px; object-fit: cover; margin-top: 20px; }
+.inline-image p { flex-grow: 1; margin-top: 15px; }
+/* Références en APA : retrait suspendu */
+.refs p, ul.refs li { text-align: left; padding-left: 1.5em; text-indent: -1.5em; }
+ul.refs { list-style: none; padding-left: 0; }
+.entry { margin: 1em 0 0.2em 0; text-align: left; }
+.entry + p, .entry + ul { margin-top: 0.1em; }
+.dates { color: var(--muted); }
+.cv-embed { width: 100%; height: 85vh; border: 1px solid var(--rule); border-radius: 5px; background: #fff; }
+nav .lang a { margin-right: 0.6em; }
+@media screen and (min-width:1100px) {
+  nav { position: absolute; right: 50%; margin-right: 340px !important; }
+  nav hr { display: none; }
+  .inline-image { flex-wrap: nowrap; }
+}
+@media screen and (max-width:700px) {
+  .limiter, main { width: auto; padding: 0; }
+  body { padding: 12px; }
+  hr { margin-top: 0; }
+  p { text-align: left; }
+}
+</style>

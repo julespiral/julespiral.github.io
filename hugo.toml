@@ -1,0 +1,62 @@
+baseURL = 'https://julespiral.github.io/'
+title = 'Jules Piral'
+defaultContentLanguage = 'en'
+defaultContentLanguageInSubdir = false
+disableKinds = ['taxonomy', 'term', 'RSS']
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[params]
+  email = 'jules.piral.1@ulaval.ca'
+  github = 'julespiral'
+  linkedin = 'julespiral'
+
+[languages]
+  [languages.en]
+    label = 'EN'
+    locale = 'en'
+    contentDir = 'content/en'
+    weight = 1
+    [languages.en.params]
+      description = 'Jules Piral, M.A. student in political science at Université Laval. Public opinion, activism, climate politics, and large language models.'
+    [[languages.en.menus.main]]
+      name = 'Home'
+      pageRef = '/'
+      weight = 1
+    [[languages.en.menus.main]]
+      name = 'Research'
+      pageRef = '/research'
+      weight = 2
+    [[languages.en.menus.main]]
+      name = 'Teaching'
+      pageRef = '/teaching'
+      weight = 3
+    [[languages.en.menus.main]]
+      name = 'CV'
+      pageRef = '/cv'
+      weight = 4
+
+  [languages.fr]
+    label = 'FR'
+    locale = 'fr'
+    contentDir = 'content/fr'
+    weight = 2
+    [languages.fr.params]
+      description = "Jules Piral, étudiant à la maîtrise en science politique à l'Université Laval. Opinion publique, activisme, politique climatique et grands modèles de langage."
+    [[languages.fr.menus.main]]
+      name = 'Accueil'
+      pageRef = '/'
+      weight = 1
+    [[languages.fr.menus.main]]
+      name = 'Recherche'
+      pageRef = '/research'
+      weight = 2
+    [[languages.fr.menus.main]]
+      name = 'Enseignement'
+      pageRef = '/teaching'
+      weight = 3
+    [[languages.fr.menus.main]]
+      name = 'CV'
+      pageRef = '/cv'
+      weight = 4

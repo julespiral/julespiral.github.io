@@ -1,8 +1,0 @@
-# Auteurs additionnels.
-#
-# Ce fichier sert uniquement si le site a plusieurs auteurs : une page peut
-# alors déclarer `author: nom-de-la-clé` dans son en-tête YAML pour afficher
-# un profil différent dans la barre latérale.
-#
-# Le site n'a qu'un auteur — toi. Ton profil est défini dans _config.yml,
-# sous la clé `author:`. Ce fichier reste vide volontairement.
