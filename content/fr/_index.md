@@ -3,8 +3,6 @@ title: Jules Piral
 ---
 Je suis étudiant à la maîtrise en science politique à l'Université Laval, à Québec, sous la direction d'[Alexandre Gajevic Sayegh](mailto:alexandre.gajevic@pol.ulaval.ca) et de [Yannick Dufresne](mailto:yannick.dufresne@pol.ulaval.ca). Mes études sont financées par une Bourse d'études supérieures en recherche du Canada au niveau de la maîtrise (BESRC M) du Conseil de recherches en sciences humaines (CRSH).
 
-Pour les voyeurs, [voici à quoi je ressemble](/img/profile.jpg).
-
 Mes recherches se situent à la rencontre de l'**opinion publique**, de l'**activisme et de la politique climatique** et des **grands modèles de langage**, que j'étudie à la fois comme outils de recherche et comme nouvelles sources de persuasion politique.
 
 

@@ -27,6 +27,9 @@ body {
 a { color: var(--fg); text-decoration-color: var(--accent); }
 .accent { color: var(--accent); }
 li::marker { color: var(--accent); }
+/* Lien vers la photo, aligné à droite du nom sur l'accueil */
+.home-title { position: relative; }
+.photo-link { position: absolute; right: 0; bottom: 0.35em; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-size: 1rem; }
 /* L'étoile de la page courante ne doit pas élargir le menu */
 nav li { position: relative; }
 nav .current { position: absolute; margin-left: 0.3em; }
@@ -71,5 +74,6 @@ nav .lang a { margin-right: 0.6em; }
   body { padding: 12px; }
   hr { margin-top: 0; }
   p { text-align: left; }
+  .photo-link { position: static; display: block; text-align: right; font-size: 0.9rem; }
 }
 </style>
