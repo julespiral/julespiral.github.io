@@ -1,10 +1,10 @@
 <style>
-/* Adapté de buchh.org (MIT, Jonathan Buchholz). Couleurs, fond sable, texte noir et étoile vert olive. */
+/* Adapté de buchh.org (MIT, Jonathan Buchholz). Couleurs, fond blanc cassé, texte noir, étoiles et soulignés vert olive. */
 :root {
-  --bg: #e3decd;
+  --bg: #FAFAF8;
   --fg: #1A1A1A;
   --muted: #5C5A55;
-  --accent: #4b591e;
+  --accent: #3D481A;
   --rule: #1A1A1A;
 }
 html { background: var(--bg); }
@@ -24,7 +24,7 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
-a { color: var(--fg); }
+a { color: var(--fg); text-decoration-color: var(--accent); }
 .accent { color: var(--accent); }
 p { text-align: justify; }
 blockquote { font-style: italic; }
@@ -33,7 +33,7 @@ h1, h2, h3 {
   font-family: Georgia, "Times New Roman", Times, serif;
   font-weight: normal;
   line-height: 1.25;
-  border-bottom: 1px solid;
+  border-bottom: 1px solid var(--accent);
   margin-bottom: 0;
 }
 h3 { border-bottom: 0; font-style: italic; margin-top: 1.2em; }
