@@ -16,4 +16,4 @@ description: Teaching experience of Jules Piral at Université Laval.
 
 <p class="entry"><strong>Introduction to R</strong>, one-hour workshop<br><span class="dates">August 24, 2026 · Interdisciplinary Methods School (EIOM), Université Laval</span></p>
 
-A hands-on introduction to R for graduate students and researchers: from importing data to analysis and visualization, with a discussion of how to use AI assistants without losing control of one's data.
+A hands-on introduction to R for graduate students and researchers: from importing data to analysis and visualization, with a discussion of how to use AI assistants without losing control of one's data. [See the slides](https://julespiral.github.io/midi-metho/)

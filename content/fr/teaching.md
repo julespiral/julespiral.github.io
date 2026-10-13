@@ -17,4 +17,4 @@ description: Expérience d'enseignement de Jules Piral à l'Université Laval.
 
 <p class="entry"><strong>Introduction à R</strong>, atelier d'une heure<br><span class="dates">24 août 2026 · École interdisciplinaire outils et méthodes (EIOM), Université Laval</span></p>
 
-Une initiation pratique à R pour les étudiantes, étudiants et chercheurs, de l'importation des données à l'analyse et à la visualisation, avec une réflexion sur l'usage des assistants d'IA sans perdre le contrôle de ses données.
+Une initiation pratique à R pour les étudiantes, étudiants et chercheurs, de l'importation des données à l'analyse et à la visualisation, avec une réflexion sur l'usage des assistants d'IA sans perdre le contrôle de ses données. [Voir la présentation](https://julespiral.github.io/midi-metho/)
