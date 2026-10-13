@@ -3,7 +3,7 @@
     {{ partial "nav.html" . }}
     <main>
     <div class="page">
-    <h1>{{ .Title }}</h1>
+    <h1>{{ with .Params.pdf }}<a href="{{ . }}" target="_blank" rel="noopener">{{ $.Title }}</a>{{ else }}{{ .Title }}{{ end }}</h1>
     {{ .Content }}
     </div>
     <hr class="footer-rule">
