@@ -3,8 +3,6 @@ title: Enseignement
 slug: enseignement
 description: Expérience d'enseignement de Jules Piral à l'Université Laval.
 ---
-Je suis auxiliaire d'enseignement à l'Université Laval et j'anime des ateliers de méthodes.
-
 ## Auxiliaire d'enseignement, Université Laval
 
 <p class="entry"><strong>POL-2425, Persuasion et opinion publique</strong><br><span class="dates">Automne 2026 · Sous la responsabilité de Yannick Dufresne</span></p>

@@ -3,7 +3,7 @@ title: Recherche
 slug: recherche
 description: Thèmes de recherche, manuscrits et expérience de recherche de Jules Piral.
 ---
-Mes recherches portent sur trois thèmes.
+## Thèmes
 
 - Opinion publique et comportement politique
 - Activisme, mouvements sociaux et politique climatique

@@ -2,7 +2,7 @@
 title: Research
 description: Research interests, manuscripts, and research positions of Jules Piral.
 ---
-My research focuses on three themes.
+## Interests
 
 - Public opinion and political behaviour
 - Activism, social movements, and climate politics
