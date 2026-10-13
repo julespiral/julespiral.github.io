@@ -7,7 +7,6 @@ Pour les voyeurs, [voici à quoi je ressemble](/img/profile.jpg).
 
 Mes recherches se situent à la rencontre de l'**opinion publique**, de l'**activisme et de la politique climatique** et des **grands modèles de langage**, que j'étudie à la fois comme outils de recherche et comme nouvelles sources de persuasion politique.
 
-Mon mémoire se demande si présenter les gouvernements ou les entreprises, plutôt que les individus, comme responsables de la crise climatique rend les citoyens plus tolérants envers l'activisme, et si un échange avec un robot conversationnel convainc davantage qu'un court texte.
 
 ## En ce moment
 

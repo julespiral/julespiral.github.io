@@ -7,7 +7,6 @@ For the curious, [here is what I look like](/img/profile.jpg).
 
 My research sits at the intersection of **public opinion**, **activism and climate politics**, and **large language models**, which I study both as research tools and as new sources of political persuasion.
 
-My master's thesis asks whether presenting governments or corporations, rather than individuals, as responsible for the climate crisis makes citizens more tolerant of activism, and whether a conversation with an AI chatbot persuades more than a short text.
 
 ## Currently
 
