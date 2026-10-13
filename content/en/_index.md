@@ -1,6 +1,8 @@
 ---
 title: Jules Piral
 ---
+## About
+
 I am an M.A. student in political science at Université Laval, in Québec City, supervised by <a href="https://www.fss.ulaval.ca/notre-faculte/repertoire-du-personnel/alexandre-gajevic-sayegh" target="_blank" rel="noopener">Alexandre Gajevic Sayegh</a> and <a href="https://www.fss.ulaval.ca/notre-faculte/repertoire-du-personnel/yannick-dufresne" target="_blank" rel="noopener">Yannick Dufresne</a>. My graduate studies are funded by a Canada Graduate Research Scholarship (Master's) from the Social Sciences and Humanities Research Council (SSHRC).
 
 My research sits at the intersection of public opinion, activism and climate politics, and large language models, which I study both as research tools and as new sources of political persuasion.
