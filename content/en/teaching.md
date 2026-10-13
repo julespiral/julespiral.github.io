@@ -2,6 +2,8 @@
 title: Teaching
 description: Teaching experience of Jules Piral at Université Laval.
 ---
+I am a teaching assistant at Université Laval and I lead methods workshops.
+
 ## Teaching assistant, Université Laval
 
 <p class="entry"><strong>POL-2425, Persuasion and Public Opinion</strong><br><span class="dates">Fall 2026 · Course led by Yannick Dufresne</span></p>
