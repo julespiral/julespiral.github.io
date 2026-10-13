@@ -17,8 +17,8 @@ Mon mémoire se demande si présenter les gouvernements ou les entreprises, plut
 - Je développe des outils d'analyse textuelle automatisée pour la [Vitrine démocratique](https://vitrinedemocratique.com), un tableau de bord public sur la politique québécoise.
 - Je rédige un article sur le *silicon sampling* (les grands modèles de langage peuvent-ils simuler l'électorat canadien ?), soumis au congrès de la Southern Political Science Association de janvier 2027.
 
-Pour en savoir plus : pages [Recherche](/fr/recherche/) et [Enseignement](/fr/enseignement/), ou mon [CV](/fr/cv/).
+Pour en savoir plus, consultez les pages [Recherche](/fr/recherche/) et [Enseignement](/fr/enseignement/), ou mon [CV](/fr/cv/).
 
 ## Contact
 
-Le plus simple est de m'écrire : [jules.piral.1@ulaval.ca](mailto:jules.piral.1@ulaval.ca).
+Le plus simple est de m'écrire à [jules.piral.1@ulaval.ca](mailto:jules.piral.1@ulaval.ca).
