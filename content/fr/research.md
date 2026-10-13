@@ -32,13 +32,13 @@ La tolérance des citoyens envers les tactiques militantes dépend de l'acteur q
 
 ## Expérience de recherche
 
-<p class="entry"><strong>Coordonnateur du panel du CAPP, projet Datagotchi</strong>, CAPP et CLESSN, Université Laval<br><span class="dates">Septembre 2026 à aujourd'hui · Sous la direction de Shannon Dinan et Yannick Dufresne</span></p>
+<p class="entry"><strong>Coordonnateur du panel du CAPP, projet <a href="https://www.datagotchi.com/" target="_blank" rel="noopener">Datagotchi</a></strong>, CAPP et CLESSN, Université Laval<br><span class="dates">Septembre 2026 à aujourd'hui · Sous la direction de Shannon Dinan et Yannick Dufresne</span></p>
 
 Coordination de la réactivation du panel du CAPP (environ 59 000 répondants) pendant la campagne électorale québécoise de 2026 ; rédaction et programmation d'un sondage bilingue sur Qualtrics et vérification de son encadrement éthique.
 
-<p class="entry"><strong>Auxiliaire de recherche, projet Datagotchi</strong>, CLESSN, Université Laval<br><span class="dates">Juillet 2026 à aujourd'hui · Sous la direction de Yannick Dufresne</span></p>
+<p class="entry"><strong>Auxiliaire de recherche, projet <a href="https://www.datagotchi.com/" target="_blank" rel="noopener">Datagotchi</a></strong>, CLESSN, Université Laval<br><span class="dates">Juillet 2026 à aujourd'hui · Sous la direction de Yannick Dufresne</span></p>
 
-Ajout des données de réseaux sociaux à la base de connaissances de *Prof. Datagotchi*, un robot conversationnel fondé sur un grand modèle de langage qui renseigne les citoyens sur les promesses électorales ; communication et vulgarisation.
+Ajout des données de réseaux sociaux à la base de connaissances de *[Prof. Datagotchi](https://www.datagotchi.com/)*, un robot conversationnel fondé sur un grand modèle de langage qui renseigne les citoyens sur les promesses électorales ; communication et vulgarisation.
 
 <p class="entry"><strong>Auxiliaire de recherche, Vitrine démocratique</strong>, CAPP, Université Laval<br><span class="dates">Juin 2026 à aujourd'hui · Sous la direction de Shannon Dinan et Yannick Dufresne</span></p>
 

@@ -31,13 +31,13 @@ Citizens' tolerance of disruptive climate tactics depends on whom they hold resp
 
 ## Research positions
 
-<p class="entry"><strong>Panel coordinator, Datagotchi project</strong>, CAPP and CLESSN, Université Laval<br><span class="dates">September 2026 to present · Supervised by Shannon Dinan and Yannick Dufresne</span></p>
+<p class="entry"><strong>Panel coordinator, <a href="https://www.datagotchi.com/" target="_blank" rel="noopener">Datagotchi</a> project</strong>, CAPP and CLESSN, Université Laval<br><span class="dates">September 2026 to present · Supervised by Shannon Dinan and Yannick Dufresne</span></p>
 
 Coordinating the reactivation of the CAPP online panel (about 59,000 respondents) during the 2026 Quebec election; wrote and programmed a bilingual Qualtrics survey and checked its ethics coverage.
 
-<p class="entry"><strong>Research assistant, Datagotchi project</strong>, CLESSN, Université Laval<br><span class="dates">July 2026 to present · Supervised by Yannick Dufresne</span></p>
+<p class="entry"><strong>Research assistant, <a href="https://www.datagotchi.com/" target="_blank" rel="noopener">Datagotchi</a> project</strong>, CLESSN, Université Laval<br><span class="dates">July 2026 to present · Supervised by Yannick Dufresne</span></p>
 
-Added social media data to the knowledge base of *Prof. Datagotchi*, an LLM-based chatbot that answers citizens' questions about party platforms; outreach and science communication.
+Added social media data to the knowledge base of *[Prof. Datagotchi](https://www.datagotchi.com/)*, an LLM-based chatbot that answers citizens' questions about party platforms; outreach and science communication.
 
 <p class="entry"><strong>Research assistant, Vitrine démocratique</strong>, CAPP, Université Laval<br><span class="dates">June 2026 to present · Supervised by Shannon Dinan and Yannick Dufresne</span></p>
 

@@ -8,7 +8,7 @@ Mes recherches se situent à la rencontre de l'**opinion publique**, de l'**acti
 
 ## En ce moment
 
-- Je coordonne le panel de répondants du CAPP et je conçois des sondages pour le projet Datagotchi.
+- Je coordonne le panel de répondants du CAPP et je conçois des sondages pour le projet [Datagotchi](https://www.datagotchi.com/).
 - Je développe des outils d'analyse textuelle automatisée pour la [Vitrine démocratique](https://vitrinedemocratique.com), un tableau de bord public sur la politique québécoise.
 - Je rédige un article sur le *silicon sampling* (les grands modèles de langage peuvent-ils simuler l'électorat canadien ?), soumis au congrès de la Southern Political Science Association de janvier 2027.
 
