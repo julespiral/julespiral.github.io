@@ -2,9 +2,11 @@
 <body>
     {{ partial "nav.html" . }}
     <main>
+    <div class="page">
     <h1>{{ .Title }}</h1>
     {{ .Content }}
-    <hr>
+    </div>
+    <hr class="footer-rule">
     {{ partial "footer.html" . }}
     </main>
 </body>
