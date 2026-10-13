@@ -1,6 +1,6 @@
 ---
 title: Research
-description: Research interests, master's thesis, manuscripts, and research positions of Jules Piral.
+description: Research interests, manuscripts, and research positions of Jules Piral.
 ---
 ## Interests
 
@@ -8,12 +8,6 @@ description: Research interests, master's thesis, manuscripts, and research posi
 - Activism, social movements, and climate politics
 - Large language models in political science: as research tools and as sources of persuasion
 - Quebec and Canadian politics
-
-## Master's thesis
-
-**Who is responsible for the climate crisis? How reframing responsibility shapes tolerance for activism.** Supervised by Alexandre Gajevic Sayegh and Yannick Dufresne, Université Laval (expected 2028).
-
-Citizens' tolerance of disruptive climate tactics depends on whom they hold responsible for the crisis: governments, corporations, or individuals. Using a survey experiment with 1,500 Canadians, the thesis tests whether reframing that responsibility changes tolerance for activism, and whether a conversation with a large language model reframes it more effectively than a short text. The experiment is embedded in the SSHRC Insight project *Climate action in the age of populism*.
 
 ## Manuscripts in preparation
 

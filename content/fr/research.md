@@ -1,7 +1,7 @@
 ---
 title: Recherche
 slug: recherche
-description: Thèmes de recherche, mémoire, manuscrits et expérience de recherche de Jules Piral.
+description: Thèmes de recherche, manuscrits et expérience de recherche de Jules Piral.
 ---
 ## Thèmes
 
@@ -9,12 +9,6 @@ description: Thèmes de recherche, mémoire, manuscrits et expérience de recher
 - Activisme, mouvements sociaux et politique climatique
 - Grands modèles de langage en science politique, comme outils de recherche et comme sources de persuasion
 - Politique québécoise et canadienne
-
-## Mémoire de maîtrise
-
-**Qui est responsable de la crise climatique ? L'effet du recadrage de la responsabilité sur la tolérance envers l'activisme.** Sous la direction d'Alexandre Gajevic Sayegh et de Yannick Dufresne, Université Laval (dépôt prévu en 2028).
-
-La tolérance des citoyens envers les tactiques militantes dépend de l'acteur qu'ils jugent responsable de la crise climatique, qu'il s'agisse des gouvernements, des entreprises ou des individus. À l'aide d'un sondage expérimental auprès de 1 500 Canadiens, le mémoire vérifie si recadrer cette responsabilité modifie la tolérance envers l'activisme, et si un échange avec un grand modèle de langage la recadre plus efficacement qu'un court texte. L'expérience s'insère dans le projet *L'action climatique à l'ère du populisme*, financé par une subvention Savoir du CRSH.
 
 ## Manuscrits en préparation
 
