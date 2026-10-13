@@ -1,0 +1,9 @@
+{{- $name := .Get "pdf" -}}
+{{- $alt := .Get "alt" -}}
+<div class="cv-pages">
+{{- range (readDir "static/cv/pages") }}
+  {{- if hasPrefix .Name (printf "%s-" $name) }}
+  <img src="/cv/pages/{{ .Name }}" alt="{{ $alt }}" loading="lazy">
+  {{- end }}
+{{- end }}
+</div>
