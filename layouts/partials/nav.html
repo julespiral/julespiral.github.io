@@ -1,9 +1,8 @@
 <nav class="limiter">
-    <strong style="line-height:1.6;font-size:1rem;margin:0 0 0.25em 0;">Jules Piral</strong>
     <ul style="list-style:none;padding:0;margin:0;">
         {{ $current := . }}
         {{ range .Site.Menus.main }}
-        <li><a href="{{ .URL }}">{{ .Name }}</a>{{ if $current.IsMenuCurrent "main" . }} ✱{{ end }}</li>
+        <li><a href="{{ .URL }}">{{ .Name }}</a>{{ if $current.IsMenuCurrent "main" . }} <span class="accent">✱</span>{{ end }}</li>
         {{ end }}
         <li class="lang">{{ range .Translations }}<a href="{{ .RelPermalink }}" hreflang="{{ .Language.Locale }}">{{ if eq .Language.Lang "fr" }}Français{{ else }}English{{ end }}</a>{{ end }}</li>
     </ul>

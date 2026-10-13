@@ -1,10 +1,11 @@
 <style>
-/* Adapté de buchh.org (MIT, Jonathan Buchholz). Couleurs : fond crème. */
+/* Adapté de buchh.org (MIT, Jonathan Buchholz). Couleurs, fond crème et accent orange brûlé. */
 :root {
   --bg: #FAF7F0;
   --fg: #1A1A1A;
   --muted: #5C5A55;
-  --rule: #1A1A1A;
+  --accent: #cd3700;
+  --rule: var(--accent);
 }
 html { background: var(--bg); }
 body {
@@ -23,7 +24,8 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
-a { color: var(--fg); }
+a { color: var(--accent); }
+.accent { color: var(--accent); }
 p { text-align: justify; }
 blockquote { font-style: italic; }
 h1:first-child { margin-top: 0; }
@@ -35,7 +37,7 @@ h1, h2, h3 {
   margin-bottom: 0;
 }
 h3 { border-bottom: 0; font-style: italic; margin-top: 1.2em; }
-h1::before { content: "✱ "; margin-bottom: 0.5rem; }
+h1::before { content: "✱ "; color: var(--accent); margin-bottom: 0.5rem; }
 hr { height: 1px; background: var(--rule); border: 0; }
 img { border-radius: 5px; }
 small, .muted { color: var(--muted); }
