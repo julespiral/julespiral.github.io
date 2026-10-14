@@ -43,52 +43,52 @@
     return "M" + g.concat(d.reverse()).join("L") + "Z";
   }
 
-  function traverser(rat) {
+  // Une seule horloge, qui n'avance que lorsque la page est affichée (le navigateur suspend
+  // requestAnimationFrame dans un onglet caché). Le rat suivant ne part qu'une fois le
+  // précédent sorti de l'écran : deux rats ne peuvent jamais se croiser.
+  var horloge = 0, avant = null, actif = null, prochain = 15;
+
+  function partir(rat) {
     var depart = window.innerWidth, arrivee = -rat.offsetWidth - 10;
-    var arret = depart - 0.75 * (depart - arrivee);
-    var x = depart, arrete = false, avant = null;
-    rat.style.transform = "translateX(" + x + "px)";
-    rat.style.visibility = "visible";
+    actif = { rat: rat, x: depart, arrivee: arrivee, arret: depart - 0.75 * (depart - arrivee),
+              pause: 0, arrete: false, phase: 0, trait: rat.querySelector(".queue") };
     rat.classList.add("court");
+    rat.style.visibility = "visible";
+  }
 
-    var trait = rat.querySelector(".queue"), phase = 0, dernier = null;
-    function onduler(t) {
-      if (rat.style.visibility !== "visible") return;
-      if (dernier !== null) phase += (t - dernier) / 1000 * (rat.classList.contains("renifle") ? 1.5 : 4);
-      dernier = t;
-      trait.setAttribute("d", queue(phase));
-      requestAnimationFrame(onduler);
-    }
-    requestAnimationFrame(onduler);
-
-    function image(t) {
-      if (avant === null) avant = t;
-      x -= VITESSE * Math.min((t - avant) / 1000, 0.05);
-      avant = t;
-      if (!arrete && x <= arret) {
-        x = arret;
-        arrete = true;
-        rat.style.transform = "translateX(" + x + "px)";
+  function avancer(dt) {
+    var a = actif, rat = a.rat;
+    if (a.pause > 0) {
+      a.pause -= dt;
+      if (a.pause <= 0) rat.classList.replace("renifle", "court");
+    } else {
+      a.x -= VITESSE * dt;
+      if (!a.arrete && a.x <= a.arret) {
+        a.x = a.arret;
+        a.arrete = true;
+        a.pause = PAUSE / 1000;
         rat.classList.replace("court", "renifle");
-        setTimeout(function () {
-          rat.classList.replace("renifle", "court");
-          avant = null;
-          requestAnimationFrame(image);
-        }, PAUSE);
-        return;
       }
-      rat.style.transform = "translateX(" + x + "px)";
-      if (x > arrivee) requestAnimationFrame(image);
-      else { rat.classList.remove("court"); rat.style.visibility = "hidden"; }
     }
-    requestAnimationFrame(image);
+    a.phase += dt * (a.pause > 0 ? 1.5 : 4);
+    a.trait.setAttribute("d", queue(a.phase));
+    rat.style.transform = "translateX(" + a.x + "px)";
+    if (a.x <= a.arrivee) {
+      rat.classList.remove("court");
+      rat.style.visibility = "hidden";
+      actif = null;
+      prochain = 15 * (tour + 1);  // le deuxième à 30 s, le troisième à 45 s…
+    }
   }
 
-  function suivant() {
-    traverser(rats[tour]);
-    tour++;
-    if (tour < rats.length) setTimeout(suivant, 15000);
+  function image(t) {
+    var dt = avant === null ? 0 : Math.min((t - avant) / 1000, 0.05);
+    avant = t;
+    horloge += dt;
+    if (actif) avancer(dt);
+    else if (horloge >= prochain && tour < rats.length) partir(rats[tour++]);
+    if (actif || tour < rats.length) requestAnimationFrame(image);
   }
-  setTimeout(suivant, 15000);
+  requestAnimationFrame(image);
 })();
 </script>
