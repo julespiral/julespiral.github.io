@@ -13,7 +13,7 @@ from pathlib import Path
 INK = "#1A1A1A"
 PAPER = "#FAFAF8"
 PINK = "#E3A1A1"
-W, H = 160, 72
+W, H = 232, 72
 
 # Formes du corps, vu de côté, tête à gauche : (cx, cy, rx, ry, rotation en degrés)
 BODY = (90, 41, 34, 20, -8)
@@ -68,6 +68,34 @@ def in_hood(x, y):
     if x < 72 - (y - 20) * 0.35:
         return True
     return y < 30 + (x - 72) * 0.06
+
+
+def queue(t, vitesse=6 * math.pi):
+    """Contour de la queue : elle descend jusqu'au sol puis traîne derrière en ondulant comme un serpent.
+    Même calcul que la fonction queue() du script de partials/rat.html, qui l'anime."""
+    pts = []
+    n = 48
+    for i in range(n + 1):
+        s = i / n
+        if s < 0.22:
+            u = s / 0.22
+            x = (1 - u) ** 2 * 122 + 2 * u * (1 - u) * 130 + u * u * 146
+            y = (1 - u) ** 2 * 49 + 2 * u * (1 - u) * 64 + u * u * 64.5
+        else:
+            x, y = 146 + (s - 0.22) / 0.78 * 84, 64.5
+        a = 4.5 * min(1, max(0, (s - 0.12) / 0.5))
+        ph = 2 * math.pi * 2.3 * s - vitesse * t
+        pts.append((x + 0.27 * a * math.cos(ph), y - a * (0.5 + 0.5 * math.sin(ph)), s))
+    gauche, droite = [], []
+    for i, (x, y, s) in enumerate(pts):
+        x0, y0, _ = pts[max(i - 1, 0)]
+        x1, y1, _ = pts[min(i + 1, n)]
+        dx, dy = x1 - x0, y1 - y0
+        d = math.hypot(dx, dy) or 1
+        h = 1.7 * (1 - s) + 0.3
+        gauche.append(f"{x - dy / d * h:.1f} {y + dx / d * h:.1f}")
+        droite.append(f"{x + dy / d * h:.1f} {y - dx / d * h:.1f}")
+    return "M" + "L".join(gauche + droite[::-1]) + "Z"
 
 
 def make(kind, seed):
@@ -138,11 +166,7 @@ def make(kind, seed):
 <g class="patte b"><path {leg} d="M104 54L98 64L90 66"/><path {leg} d="{toes(90, 66)}"/></g>'''
 
     return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}">
-<g class="queue">
-<path d="M122 49C140 61 152 58 159 43" fill="none" stroke="{INK}" stroke-width="3.2" stroke-linecap="round"/>
-<path d="M122 49C140 61 152 58 159 43" fill="none" stroke="{PINK}" stroke-width="1.6" stroke-linecap="round"/>
-<path d="M128 53l1-2M134 56l1-2M140 57l0.6-2M146 56l0.4-2M152 53l0.2-2" stroke="{INK}" stroke-width="0.5"/>
-</g>
+<path class="queue" fill="{PINK}" stroke="{INK}" stroke-width="0.55" stroke-linejoin="round" d="{queue(0)}"/>
 {legs}
 <g fill="{PAPER}">{"".join(ellipse(s) for s in SHAPES)}</g>
 {hood}

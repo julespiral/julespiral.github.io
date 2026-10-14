@@ -73,8 +73,8 @@ ul.refs { list-style: none; padding-left: 0; }
 .cv-pages img + img { border-top: 2px solid var(--accent); }
 /* Deux rats à l'encre traversent le bas de la fenêtre (déplacement géré par le script de partials/rat.html) */
 .rat-track { position: fixed; left: 0; right: 0; bottom: 0; height: 76px; overflow: hidden; pointer-events: none; z-index: 10; }
-.rat { position: absolute; bottom: 2px; left: 0; width: 150px; visibility: hidden; }
-.rat svg { display: block; width: 150px; height: auto; }
+.rat { position: absolute; bottom: 2px; left: 0; width: 218px; visibility: hidden; }
+.rat svg { display: block; width: 218px; height: auto; }
 .rat .patte { transform-box: fill-box; transform-origin: 50% 0; }
 .rat .loin { opacity: 0.5; }
 /* Trot : les pattes en diagonale avancent ensemble, levées pendant le retour vers l'avant */
@@ -82,10 +82,6 @@ ul.refs { list-style: none; padding-left: 0; }
 .rat.court .patte { animation: rat-pas 0.26s linear infinite; }
 .rat.court .patte.b { animation-delay: -0.13s; }
 .rat .museau { transform-box: fill-box; transform-origin: 100% 40%; }
-/* La queue ondule depuis sa base : vite en course, lentement à l'arrêt */
-.rat .queue { transform-box: fill-box; transform-origin: 0% 35%; animation: rat-queue 0.52s ease-in-out infinite alternate; }
-.rat.renifle .queue { animation-duration: 1.1s; }
-@keyframes rat-queue { from { transform: rotate(-9deg) skewY(3deg); } to { transform: rotate(7deg) skewY(-3deg); } }
 .rat.renifle .museau { animation: rat-renifle 0.16s ease-in-out infinite alternate; }
 @keyframes rat-pas {
   0% { transform: rotate(24deg); }
