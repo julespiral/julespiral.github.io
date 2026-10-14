@@ -1,5 +1,5 @@
 {{- /* Deux rats à l'encre (dessins générés par scripts/rats.py) passent à tour de rôle en bas de la fenêtre :
-       un toutes les 30 secondes, avec une pause pour renifler aux trois quarts du chemin. */ -}}
+       un toutes les 15 secondes (le premier à 15 s), avec une pause pour renifler aux trois quarts du chemin. */ -}}
 <div class="rat-track" aria-hidden="true">
   <div class="rat">{{ readFile "static/img/rat-capuchon.svg" | safeHTML }}</div>
   <div class="rat">{{ readFile "static/img/rat-albinos.svg" | safeHTML }}</div>
@@ -46,8 +46,8 @@
   function suivant() {
     traverser(rats[tour % rats.length]);
     tour++;
-    setTimeout(suivant, 30000);
+    setTimeout(suivant, 15000);
   }
-  setTimeout(suivant, 5000);
+  setTimeout(suivant, 15000);
 })();
 </script>

@@ -82,6 +82,10 @@ ul.refs { list-style: none; padding-left: 0; }
 .rat.court .patte { animation: rat-pas 0.26s linear infinite; }
 .rat.court .patte.b { animation-delay: -0.13s; }
 .rat .museau { transform-box: fill-box; transform-origin: 100% 40%; }
+/* La queue ondule depuis sa base : vite en course, lentement à l'arrêt */
+.rat .queue { transform-box: fill-box; transform-origin: 0% 35%; animation: rat-queue 0.52s ease-in-out infinite alternate; }
+.rat.renifle .queue { animation-duration: 1.1s; }
+@keyframes rat-queue { from { transform: rotate(-9deg) skewY(3deg); } to { transform: rotate(7deg) skewY(-3deg); } }
 .rat.renifle .museau { animation: rat-renifle 0.16s ease-in-out infinite alternate; }
 @keyframes rat-pas {
   0% { transform: rotate(24deg); }

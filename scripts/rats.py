@@ -138,9 +138,11 @@ def make(kind, seed):
 <g class="patte b"><path {leg} d="M104 54L98 64L90 66"/><path {leg} d="{toes(90, 66)}"/></g>'''
 
     return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}">
+<g class="queue">
 <path d="M122 49C140 61 152 58 159 43" fill="none" stroke="{INK}" stroke-width="3.2" stroke-linecap="round"/>
 <path d="M122 49C140 61 152 58 159 43" fill="none" stroke="{PINK}" stroke-width="1.6" stroke-linecap="round"/>
 <path d="M128 53l1-2M134 56l1-2M140 57l0.6-2M146 56l0.4-2M152 53l0.2-2" stroke="{INK}" stroke-width="0.5"/>
+</g>
 {legs}
 <g fill="{PAPER}">{"".join(ellipse(s) for s in SHAPES)}</g>
 {hood}

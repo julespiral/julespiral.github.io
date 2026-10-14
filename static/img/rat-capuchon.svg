@@ -1,7 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 72" width="160" height="72">
+<g class="queue">
 <path d="M122 49C140 61 152 58 159 43" fill="none" stroke="#1A1A1A" stroke-width="3.2" stroke-linecap="round"/>
 <path d="M122 49C140 61 152 58 159 43" fill="none" stroke="#E3A1A1" stroke-width="1.6" stroke-linecap="round"/>
 <path d="M128 53l1-2M134 56l1-2M140 57l0.6-2M146 56l0.4-2M152 53l0.2-2" stroke="#1A1A1A" stroke-width="0.5"/>
+</g>
 <g class="patte b loin"><path fill="none" stroke="#1A1A1A" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" d="M58 47L58 64L54 65"/><path fill="none" stroke="#1A1A1A" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" d="M54 65l-3.6 0.5M54 65l-3 1.8M54 65l-1 2.2"/></g>
 <g class="patte a loin"><path fill="none" stroke="#1A1A1A" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" d="M114 52L110 63L102 65"/><path fill="none" stroke="#1A1A1A" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" d="M102 65l-3.6 0.5M102 65l-3 1.8M102 65l-1 2.2"/></g>
 <g class="patte a"><path fill="none" stroke="#1A1A1A" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" d="M50 47L48 64L43 65"/><path fill="none" stroke="#1A1A1A" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" d="M43 65l-3.6 0.5M43 65l-3 1.8M43 65l-1 2.2"/></g>
