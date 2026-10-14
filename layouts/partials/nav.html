@@ -2,7 +2,7 @@
     <ul style="list-style:none;padding:0;margin:0;">
         {{ $current := . }}
         {{ range .Site.Menus.main }}
-        <li><a href="{{ .URL }}">{{ .Name }}</a>{{ if $current.IsMenuCurrent "main" . }} <span class="accent current">✱</span>{{ end }}</li>
+        <li{{ if $current.IsMenuCurrent "main" . }} class="actif"{{ end }}><a href="{{ .URL }}">{{ .Name }}</a>{{ if $current.IsMenuCurrent "main" . }} <span class="accent current">✱</span>{{ end }}</li>
         {{ end }}
         <li class="lang">{{ range .Translations }}<a href="{{ .RelPermalink }}" hreflang="{{ .Language.Locale }}">{{ if eq .Language.Lang "fr" }}Français{{ else }}English{{ end }}</a>{{ end }}</li>
     </ul>
