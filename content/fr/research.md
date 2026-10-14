@@ -52,11 +52,11 @@ Revue de littérature systématique (Zotero, Covidence).
 
 ## Affiliations
 
-- **CAPP**, Centre d'analyse des politiques publiques
-- **CLESSN**, Chaire de leadership en enseignement des sciences sociales numériques
-- **OREV**, Observatoire de Recherche en Économie Verte
-- **Institut EDS**, Institut en environnement, développement et société
-- **CIRGoM**, Centre interdisciplinaire de recherche sur la gouvernance mondiale
-- **CÉCD**, Centre pour l'étude de la citoyenneté démocratique
-- Chaire de recherche sur la démocratie et les institutions parlementaires
-- **GRCP**, Groupe de recherche en communication politique
+- <strong><a href="https://capp-ulaval.ca/" target="_blank" rel="noopener">CAPP</a></strong>, Centre d'analyse des politiques publiques
+- <strong><a href="https://www.clessn.com/" target="_blank" rel="noopener">CLESSN</a></strong>, Chaire de leadership en enseignement des sciences sociales numériques
+- <strong><a href="https://www.orev.fss.ulaval.ca/" target="_blank" rel="noopener">OREV</a></strong>, Observatoire de Recherche en Économie Verte
+- <strong><a href="https://ieds.ulaval.ca/" target="_blank" rel="noopener">Institut EDS</a></strong>, Institut en environnement, développement et société
+- <strong><a href="https://www.cirgom.ulaval.ca/" target="_blank" rel="noopener">CIRGoM</a></strong>, Centre interdisciplinaire de recherche sur la gouvernance mondiale
+- <strong><a href="https://csdc-cecd.ca/" target="_blank" rel="noopener">CÉCD</a></strong>, Centre pour l'étude de la citoyenneté démocratique
+- <a href="https://www.democratie.chaire.ulaval.ca/" target="_blank" rel="noopener">Chaire de recherche sur la démocratie et les institutions parlementaires</a>
+- <strong><a href="https://www.grcp.ulaval.ca/" target="_blank" rel="noopener">GRCP</a></strong>, Groupe de recherche en communication politique
