@@ -6,7 +6,8 @@
 </div>
 <script>
 (function () {
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  // Pas de rats sur téléphone, ni pour qui a demandé moins d'animations
+  if (window.matchMedia("(prefers-reduced-motion: reduce), (max-width: 700px)").matches) return;
   var rats = document.querySelectorAll(".rat");
   var VITESSE = 420;  // pixels par seconde
   var PAUSE = 1800;   // millisecondes d'arrêt
