@@ -8,7 +8,38 @@
     <meta name="color-scheme" content="light">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✱</text></svg>">
     <link rel="apple-touch-icon" href="/img/apple-touch-icon-180x180.png">
-    {{ range .AllTranslations }}<link rel="alternate" hreflang="{{ .Language.Locale }}" href="{{ .Permalink }}">
+    {{- $base := .Site.Params.canonical }}
+    {{- $url := printf "%s%s" $base .RelPermalink }}
+    {{- $desc := .Description | default .Site.Params.description }}
+    <link rel="canonical" href="{{ $url }}">
+    <meta property="og:type" content="{{ if .IsHome }}profile{{ else }}website{{ end }}">
+    <meta property="og:site_name" content="Jules Piral">
+    <meta property="og:title" content="{{ if .IsHome }}Jules Piral{{ else }}{{ .Title }} / Jules Piral{{ end }}">
+    <meta property="og:description" content="{{ $desc }}">
+    <meta property="og:url" content="{{ $url }}">
+    <meta property="og:image" content="{{ $base }}/img/profile.jpg">
+    <meta property="og:locale" content="{{ if eq .Site.Language.Lang "fr" }}fr_CA{{ else }}en_CA{{ end }}">
+    <meta name="twitter:card" content="summary">
+    {{- if .IsHome }}
+    <script type="application/ld+json">
+    {{ dict
+      "@context" "https://schema.org"
+      "@graph" (slice
+        (dict "@type" "WebSite" "@id" (printf "%s/#site" $base) "url" (printf "%s/" $base) "name" "Jules Piral" "inLanguage" (slice "en" "fr"))
+        (dict "@type" "Person" "@id" (printf "%s/#jules" $base)
+          "name" "Jules Piral"
+          "url" (printf "%s/" $base)
+          "image" (printf "%s/img/profile.jpg" $base)
+          "email" (printf "mailto:%s" .Site.Params.email)
+          "jobTitle" (cond (eq .Site.Language.Lang "fr") "Étudiant à la maîtrise en science politique" "M.A. student in political science")
+          "affiliation" (dict "@type" "CollegeOrUniversity" "name" "Université Laval" "url" "https://www.ulaval.ca/")
+          "alumniOf" (dict "@type" "CollegeOrUniversity" "name" "Université Laval")
+          "knowsAbout" (slice "Public opinion" "Political behaviour" "Climate politics" "Activism" "Large language models")
+          "sameAs" (slice (printf "https://github.com/%s" .Site.Params.github) (printf "https://www.linkedin.com/in/%s" .Site.Params.linkedin) "https://www.chaire-epi.ulaval.ca/en/jules-piral"))
+      ) | jsonify | safeJS }}
+    </script>
+    {{- end }}
+    {{ range .AllTranslations }}<link rel="alternate" hreflang="{{ .Language.Locale }}" href="{{ $.Site.Params.canonical }}{{ .RelPermalink }}">
     {{ end }}
     {{ partial "style.html" . }}
 </head>

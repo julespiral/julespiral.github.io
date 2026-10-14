@@ -8,6 +8,8 @@ disableKinds = ['taxonomy', 'term', 'RSS']
   unsafe = true
 
 [params]
+  # Adresse officielle : sert aux liens canoniques même quand le site est construit ailleurs (copie GitHub Pages)
+  canonical = 'https://julespiral.com'
   email = 'jules.piral.1@ulaval.ca'
   github = 'julespiral'
   linkedin = 'julespiral'
