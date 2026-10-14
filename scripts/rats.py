@@ -70,8 +70,8 @@ def in_hood(x, y):
     return y < 30 + (x - 72) * 0.06
 
 
-def queue(t, vitesse=6 * math.pi):
-    """Contour de la queue : elle descend jusqu'au sol puis traîne derrière en ondulant comme un serpent.
+def queue(t):
+    """Contour de la queue : elle descend jusqu'au sol puis traîne derrière en un arc souple qui se soulève à peine.
     Même calcul que la fonction queue() du script de partials/rat.html, qui l'anime."""
     pts = []
     n = 48
@@ -83,9 +83,12 @@ def queue(t, vitesse=6 * math.pi):
             y = (1 - u) ** 2 * 49 + 2 * u * (1 - u) * 64 + u * u * 64.5
         else:
             x, y = 146 + (s - 0.22) / 0.78 * 84, 64.5
-        a = 4.5 * min(1, max(0, (s - 0.12) / 0.5))
-        ph = 2 * math.pi * 2.3 * s - vitesse * t
-        pts.append((x + 0.27 * a * math.cos(ph), y - a * (0.5 + 0.5 * math.sin(ph)), s))
+        if s > 0.22:
+            u = (s - 0.22) / 0.78
+            y -= (1.2 + 1.2 * math.sin(t)) * math.sin(math.pi * u) * (1 - u * 0.5)
+            y -= (1.5 + 1.5 * math.sin(t * 0.37 + 1)) * u ** 4
+            x -= 2 * (0.5 + 0.5 * math.sin(t * 0.5)) * u
+        pts.append((x, y, s))
     gauche, droite = [], []
     for i, (x, y, s) in enumerate(pts):
         x0, y0, _ = pts[max(i - 1, 0)]

@@ -1,7 +1,6 @@
 {{ partial "head.html" . }}
 <body>
     {{ partial "nav.html" . }}
-    {{ partial "rat.html" . }}
     <main>
     <div class="page">
     <h1>{{ with .Params.pdf }}<a href="{{ . }}" target="_blank" rel="noopener">{{ $.Title }}</a>{{ else }}{{ .Title }}{{ end }}</h1>

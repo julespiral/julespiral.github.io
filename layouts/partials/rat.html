@@ -1,5 +1,5 @@
-{{- /* Deux rats à l'encre (dessins générés par scripts/rats.py) passent à tour de rôle en bas de la fenêtre :
-       un toutes les 15 secondes (le premier à 15 s), avec une pause pour renifler aux trois quarts du chemin. */ -}}
+{{- /* Deux rats à l'encre (dessins générés par scripts/rats.py) passent une seule fois chacun en bas de la page d'accueil :
+       le premier à 15 s, le second à 30 s, avec une pause pour renifler aux trois quarts du chemin. */ -}}
 <div class="rat-track" aria-hidden="true">
   <div class="rat">{{ readFile "static/img/rat-capuchon.svg" | safeHTML }}</div>
   <div class="rat">{{ readFile "static/img/rat-albinos.svg" | safeHTML }}</div>
@@ -12,9 +12,9 @@
   var PAUSE = 1800;   // millisecondes d'arrêt
   var tour = 0;
 
-  // Queue qui ondule comme un serpent (même calcul que queue() dans scripts/rats.py)
-  function queue(t, w) {
-    var pts = [], n = 48, i, s, u, x, y, a, ph;
+  // Queue qui traîne au sol : un arc souple qui se soulève à peine (même calcul que queue() dans scripts/rats.py)
+  function queue(t) {
+    var pts = [], n = 48, i, s, u, x, y;
     for (i = 0; i <= n; i++) {
       s = i / n;
       if (s < 0.22) {
@@ -22,9 +22,14 @@
         x = (1 - u) * (1 - u) * 122 + 2 * u * (1 - u) * 130 + u * u * 146;
         y = (1 - u) * (1 - u) * 49 + 2 * u * (1 - u) * 64 + u * u * 64.5;
       } else { x = 146 + (s - 0.22) / 0.78 * 84; y = 64.5; }
-      a = 4.5 * Math.min(1, Math.max(0, (s - 0.12) / 0.5));
-      ph = 2 * Math.PI * 2.3 * s - w * t;
-      pts.push([x + 0.27 * a * Math.cos(ph), y - a * (0.5 + 0.5 * Math.sin(ph)), s]);
+      if (s > 0.22) {
+        u = (s - 0.22) / 0.78;
+        // un seul arc qui se soulève et retombe, et le bout qui se relève doucement
+        y -= (1.2 + 1.2 * Math.sin(t)) * Math.sin(Math.PI * u) * (1 - u * 0.5);
+        y -= (1.5 + 1.5 * Math.sin(t * 0.37 + 1)) * Math.pow(u, 4);
+        x -= 2 * (0.5 + 0.5 * Math.sin(t * 0.5)) * u;
+      }
+      pts.push([x, y, s]);
     }
     var g = [], d = [];
     for (i = 0; i <= n; i++) {
@@ -48,9 +53,9 @@
     var trait = rat.querySelector(".queue"), phase = 0, dernier = null;
     function onduler(t) {
       if (rat.style.visibility !== "visible") return;
-      if (dernier !== null) phase += (t - dernier) / 1000 * (arrete && rat.classList.contains("renifle") ? 2.5 : 6) * Math.PI;
+      if (dernier !== null) phase += (t - dernier) / 1000 * (rat.classList.contains("renifle") ? 1.5 : 4);
       dernier = t;
-      trait.setAttribute("d", queue(phase, 1));
+      trait.setAttribute("d", queue(phase));
       requestAnimationFrame(onduler);
     }
     requestAnimationFrame(onduler);
@@ -79,9 +84,9 @@
   }
 
   function suivant() {
-    traverser(rats[tour % rats.length]);
+    traverser(rats[tour]);
     tour++;
-    setTimeout(suivant, 15000);
+    if (tour < rats.length) setTimeout(suivant, 15000);
   }
   setTimeout(suivant, 15000);
 })();
