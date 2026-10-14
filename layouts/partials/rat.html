@@ -1,5 +1,53 @@
-{{- /* Deux rats à l'encre (générés par scripts/rats.py) passent à tour de rôle en bas de la fenêtre. */ -}}
+{{- /* Deux rats à l'encre (dessins générés par scripts/rats.py) passent à tour de rôle en bas de la fenêtre :
+       un toutes les 30 secondes, avec une pause pour renifler aux trois quarts du chemin. */ -}}
 <div class="rat-track" aria-hidden="true">
-  <img class="rat rat-1" src="/img/rat-capuchon.svg" alt="" width="150" height="67">
-  <img class="rat rat-2" src="/img/rat-albinos.svg" alt="" width="150" height="67">
+  <div class="rat">{{ readFile "static/img/rat-capuchon.svg" | safeHTML }}</div>
+  <div class="rat">{{ readFile "static/img/rat-albinos.svg" | safeHTML }}</div>
 </div>
+<script>
+(function () {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  var rats = document.querySelectorAll(".rat");
+  var VITESSE = 420;  // pixels par seconde
+  var PAUSE = 1800;   // millisecondes d'arrêt
+  var tour = 0;
+
+  function traverser(rat) {
+    var depart = window.innerWidth, arrivee = -rat.offsetWidth - 10;
+    var arret = depart - 0.75 * (depart - arrivee);
+    var x = depart, arrete = false, avant = null;
+    rat.style.transform = "translateX(" + x + "px)";
+    rat.style.visibility = "visible";
+    rat.classList.add("court");
+
+    function image(t) {
+      if (avant === null) avant = t;
+      x -= VITESSE * Math.min((t - avant) / 1000, 0.05);
+      avant = t;
+      if (!arrete && x <= arret) {
+        x = arret;
+        arrete = true;
+        rat.style.transform = "translateX(" + x + "px)";
+        rat.classList.replace("court", "renifle");
+        setTimeout(function () {
+          rat.classList.replace("renifle", "court");
+          avant = null;
+          requestAnimationFrame(image);
+        }, PAUSE);
+        return;
+      }
+      rat.style.transform = "translateX(" + x + "px)";
+      if (x > arrivee) requestAnimationFrame(image);
+      else { rat.classList.remove("court"); rat.style.visibility = "hidden"; }
+    }
+    requestAnimationFrame(image);
+  }
+
+  function suivant() {
+    traverser(rats[tour % rats.length]);
+    tour++;
+    setTimeout(suivant, 30000);
+  }
+  setTimeout(suivant, 5000);
+})();
+</script>

@@ -71,13 +71,26 @@ ul.refs { list-style: none; padding-left: 0; }
 /* Une page entière du CV par hauteur de cadre */
 .cv-pages img { display: block; width: 100%; height: auto; border-radius: 0; margin: 0; scroll-snap-align: start; }
 .cv-pages img + img { border-top: 2px solid var(--accent); }
-/* Deux rats à l'encre traversent le bas de la fenêtre à tour de rôle, un toutes les 30 secondes */
+/* Deux rats à l'encre traversent le bas de la fenêtre (déplacement géré par le script de partials/rat.html) */
 .rat-track { position: fixed; left: 0; right: 0; bottom: 0; height: 76px; overflow: hidden; pointer-events: none; z-index: 10; }
-.rat { position: absolute; bottom: 2px; left: 100%; margin: 0; border-radius: 0; max-width: none; animation: rat-run 60s linear infinite, rat-hop 0.3s ease-in-out infinite alternate; }
-.rat-1 { animation-delay: 5s, 0s; }
-.rat-2 { animation-delay: 35s, 0s; }
-@keyframes rat-run { 0% { left: 100%; } 15%, 100% { left: -170px; } }
-@keyframes rat-hop { from { transform: translateY(0); } to { transform: translateY(-2px); } }
+.rat { position: absolute; bottom: 2px; left: 0; width: 150px; visibility: hidden; }
+.rat svg { display: block; width: 150px; height: auto; }
+.rat .patte { transform-box: fill-box; transform-origin: 50% 0; }
+.rat .loin { opacity: 0.5; }
+/* Trot : les pattes en diagonale avancent ensemble, levées pendant le retour vers l'avant */
+.rat.court svg { animation: rat-rebond 0.13s ease-in-out infinite alternate; }
+.rat.court .patte { animation: rat-pas 0.26s linear infinite; }
+.rat.court .patte.b { animation-delay: -0.13s; }
+.rat .museau { transform-box: fill-box; transform-origin: 100% 40%; }
+.rat.renifle .museau { animation: rat-renifle 0.16s ease-in-out infinite alternate; }
+@keyframes rat-pas {
+  0% { transform: rotate(24deg); }
+  58% { transform: rotate(-24deg); }
+  80% { transform: translateY(-2.5px) rotate(4deg); }
+  100% { transform: rotate(24deg); }
+}
+@keyframes rat-rebond { from { transform: translateY(0); } to { transform: translateY(-1.5px); } }
+@keyframes rat-renifle { from { transform: rotate(-5deg); } to { transform: rotate(5deg); } }
 @media (prefers-reduced-motion: reduce) { .rat-track { display: none; } }
 nav .lang a { margin-right: 0.6em; }
 @media screen and (min-width:1100px) {
