@@ -46,7 +46,7 @@ li::marker { color: var(--accent); }
   .photo-du-jour figcaption { left: 50%; transform: translateX(-50%); }
 }
 /* Logos de contact en bas à gauche, sous le menu ; à la fin de la page sur petit écran */
-.contact { position: fixed; bottom: 20px; left: 40px; display: flex; gap: 0.9em; z-index: 11; }
+.contact { position: fixed; bottom: 20px; left: 40px; display: flex; gap: 0.9em; z-index: 5; }
 .contact a { display: block; line-height: 0; }
 .contact svg { width: 20px; height: 20px; fill: var(--accent); color: var(--accent); }
 .contact a:hover svg { fill: var(--fg); color: var(--fg); }
@@ -94,7 +94,7 @@ ul.refs { list-style: none; padding-left: 0; }
 .rat { position: absolute; bottom: 2px; left: 0; width: 145px; visibility: hidden; }
 .rat svg { display: block; width: 145px; height: auto; }
 .rat .patte { transform-box: fill-box; transform-origin: 50% 0; }
-.rat .loin { opacity: 0.5; }
+.rat .loin path { stroke: #9A9893; }  /* pattes du côté caché plus pâles, mais opaques */
 /* Trot : les pattes en diagonale avancent ensemble, levées pendant le retour vers l'avant */
 .rat.court svg { animation: rat-rebond 0.13s ease-in-out infinite alternate; }
 .rat.court .patte { animation: rat-pas 0.26s linear infinite; }
