@@ -43,7 +43,8 @@ NASA_SUJETS = ["Hubble galaxy", "Hubble nebula", "Webb telescope image", "Blue M
                "comet", "Pillars of Creation", "star cluster", "supernova remnant", "Earth at night"]
 # Photos d'événements, de réunions ou de matériel, qu'on ne veut pas en image du jour
 NASA_EXCLUS = re.compile(r"town hall|panel|meeting|press|briefing|conference|ceremony|award|interview|"
-                         r"workshop|team|installation|cleanroom|test|visit|chart|graph|diagram|plot", re.I)
+                         r"workshop|team|installation|cleanroom|test|visit|chart|graph|diagram|plot|"
+                         r"president|keynote|address|patch|history|administrator|portrait|logo|poster|previews", re.I)
 
 
 def nasa(jour):
