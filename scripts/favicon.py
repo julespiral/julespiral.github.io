@@ -1,6 +1,8 @@
 """Compose le favicon à partir des deux rats (static/img/rat-capuchon.svg et rat-albinos.svg) :
 le rat à capuchon en haut, l'albinos en dessous, tourné dans l'autre sens. Relancer après scripts/rats.py :
     python3 scripts/favicon.py
+Les versions PNG (32, 48, 96, 180, 192, 512 px) et favicon.ico se rendent ensuite à partir de favicon-rats.svg, et
+img/favicon.svg en est une copie : Google avait mémorisé ces anciennes adresses, qui montraient un mortier bleu.
 """
 import re
 from pathlib import Path
