@@ -16,6 +16,7 @@ import json
 import re
 import sys
 import urllib.parse
+import urllib.error
 import urllib.request
 from pathlib import Path
 
@@ -50,8 +51,10 @@ NASA_EXCLUS = re.compile(r"town hall|panel|meeting|press|briefing|conference|cer
                          r"Q and A|indicator|first images of|hangout", re.I)
 
 
-def lisible(url):
-    """Vrai si le carré recadré au centre n'est ni presque noir, ni délavé, ni uniforme."""
+def lisible(url, si_refus=False):
+    """Vrai si le carré recadré au centre n'est ni presque noir, ni délavé, ni uniforme.
+    si_refus : réponse quand le serveur refuse le téléchargement (l'Art Institute bloque les machines de GitHub,
+    mais pas les visiteurs du site)."""
     try:
         from PIL import Image, ImageStat
     except ImportError:  # sans Pillow, on ne vérifie pas
@@ -60,6 +63,8 @@ def lisible(url):
         req = urllib.request.Request(url, headers={"User-Agent": UA, "Referer": "https://julespiral.com/"})
         with urllib.request.urlopen(req, timeout=60) as r:
             im = Image.open(io.BytesIO(r.read())).convert("L")
+    except urllib.error.HTTPError as e:
+        return si_refus if e.code == 403 else False
     except Exception:  # image introuvable ou format illisible : on passe à la suivante
         return False
     c = min(im.size)
@@ -143,7 +148,7 @@ def geometrique(jour):
     for k in range(min(25, len(oeuvres))):
         o = oeuvres[(depart + k) % len(oeuvres)]
         image = f"{j['config']['iiif_url']}/{o['image_id']}/full/843,/0/default.jpg"
-        if lisible(image):
+        if lisible(image, si_refus=True):
             break
     else:
         raise ValueError("pas d'œuvre lisible")
@@ -179,7 +184,7 @@ def peinture(jour):
     for k in range(min(25, len(oeuvres))):
         o = oeuvres[(depart + k) % len(oeuvres)]
         image = f"{j['config']['iiif_url']}/{o['image_id']}/full/843,/0/default.jpg"
-        if lisible(image):
+        if lisible(image, si_refus=True):
             break
     else:
         raise ValueError("pas de peinture lisible")
