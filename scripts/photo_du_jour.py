@@ -5,8 +5,10 @@ Le thème alterne d'un jour à l'autre :
     1. œuvre du domaine public de l'Art Institute of Chicago (peinture, estampe, dessin, textile, photo ou
        céramique), sans nus
 Si une source échoue, on prend l'autre. Le choix dépend seulement de la date.
+Les images sont choisies d'avance pour deux ans dans scripts/calendrier.json (scripts/calendrier.py), ce qui
+permet de les vérifier à l'œil ; au-delà, le choix se fait en direct.
 Lancé chaque matin par .github/workflows/photo-du-jour.yml ; à la main :
-    python3 scripts/photo_du_jour.py [AAAA-MM-JJ] [nasa|art]
+    python3 scripts/photo_du_jour.py [AAAA-MM-JJ]
 """
 import datetime
 import hashlib
@@ -22,6 +24,8 @@ from pathlib import Path
 
 UA = "julespiral.com photo du jour (https://julespiral.com; jules.piral.1@ulaval.ca)"
 SORTIE = Path(__file__).resolve().parent.parent / "data" / "photo.json"
+# Images des deux prochaines années, choisies d'avance et vérifiées à l'œil (scripts/calendrier.py)
+CALENDRIER = Path(__file__).resolve().parent / "calendrier.json"
 LARGEUR = 800
 
 
@@ -81,7 +85,7 @@ def evenement(d):
     return bool(d.get("photographer")) and not d["nasa_id"].lower().startswith("iss")
 
 
-def nasa(jour):
+def nasa(jour, deja=(), essai=0):
     # L'API de l'image astronomique du jour (APOD) ne renvoie plus que le logo de la NASA depuis
     # son déménagement sur science.nasa.gov : on pioche dans la photothèque images.nasa.gov.
     base = nombre(jour, "sujet", len(NASA_SUJETS))
@@ -97,7 +101,8 @@ def nasa(jour):
             d = o["data"][0]
             image = next((f for taille in ("~medium.jpg", "~large.jpg", "~orig.jpg")
                           for f in lire(o["href"]) if f.endswith(taille)), None)
-            if image and lisible(image.replace("http://", "https://")):
+            if image and f"https://images.nasa.gov/details/{d['nasa_id']}" not in deja \
+                    and lisible(image.replace("http://", "https://")):
                 break
         else:
             continue
@@ -133,30 +138,37 @@ TITRES_NUS = re.compile(
 
 
 # Œuvres repérées à la main dans les aperçus (nus que ni les étiquettes ni les titres ne signalent)
-EXCLUES = {250678, 72682, 72685}
+EXCLUES = {250678, 72682, 72685, 63019, 58988, 67028, 263712, 42102, 99525, 279903, 44415,
+           63015, 191200, 58653, 203330, 31173, 89157, 239035, 67026, 67362, 20172, 66702, 236093, 188750, 263711, 181460, 241157, 149778, 279901, 42100, 39479, 246805, 100477}
+
+
+# Le serveur de l'Art Institute bloque les machines de GitHub : là-bas, une image refusée n'est pas rejetée.
+# Le calendrier, calculé sur un poste ordinaire, met ce réglage à False pour écarter les images vraiment réservées.
+REFUS_ACCEPTE = True
 
 
 def aic(requete):
     return lire("https://api.artic.edu/api/v1/artworks/search", json.dumps(requete).encode())
 
 
-def art(jour):
+def art(jour, deja=(), essai=0):
     """Œuvre du domaine public de l'Art Institute of Chicago, sans nus.
     On tire d'abord une catégorie, puis un numéro de fiche au hasard dans cette catégorie, et on prend les œuvres
     qui suivent ce numéro : l'API plafonne chaque recherche à 1000 résultats, ce détour donne accès à toute la collection."""
-    base = nombre(jour, "type", len(TYPES))
+    base = nombre(jour, f"type{essai or ''}", len(TYPES))
     for i in range(len(TYPES)):
         filtre = [{"term": {"is_public_domain": True}}, {"exists": {"field": "image_id"}},
                   {"term": {"artwork_type_title.keyword": TYPES[(base + i) % len(TYPES)]}}]
         sans_nus = [{"terms": {"subject_titles.keyword": SUJETS_NUS}}]
         bornes = [aic({"query": {"bool": {"must": filtre}}, "sort": [{"id": sens}], "limit": 1, "fields": ["id"]})["data"][0]["id"]
                   for sens in ("asc", "desc")]
-        cible = bornes[0] + nombre(jour, "fiche", bornes[1] - bornes[0] + 1)
+        cible = bornes[0] + nombre(jour, f"fiche{essai or ''}", bornes[1] - bornes[0] + 1)
         j = aic({"query": {"bool": {"must": filtre + [{"range": {"id": {"gte": cible}}}], "must_not": sans_nus}},
                  "sort": [{"id": "asc"}], "limit": 25, "fields": ["id", "title", "artist_title", "date_display", "image_id", "thumbnail"]})
         for o in j["data"]:
             image = f"{j['config']['iiif_url']}/{o['image_id']}/full/843,/0/default.jpg"
-            if o["id"] not in EXCLUES and not TITRES_NUS.search(o["title"]) and lisible(image, si_refus=True):
+            if o["id"] not in EXCLUES and f"https://www.artic.edu/artworks/{o['id']}" not in deja \
+                    and not TITRES_NUS.search(o["title"]) and lisible(image, si_refus=REFUS_ACCEPTE):
                 t = o.get("thumbnail") or {}
                 return {
                     "theme": "art",
@@ -176,17 +188,26 @@ def art(jour):
 THEMES = [nasa, art]
 
 
-def main():
-    jour = datetime.date.fromisoformat(sys.argv[1]) if len(sys.argv) > 1 else datetime.date.today()
+def choisir(jour, deja=(), essai=0):
+    """Choix en direct, selon la date ; si la source du jour échoue, on prend l'autre thème."""
     choix = THEMES[jour.toordinal() % len(THEMES)]
-    if len(sys.argv) > 2:
-        choix = next(f for f in THEMES if f.__name__ == sys.argv[2])
     try:
-        photo = choix(jour)
-    except Exception as e:  # source en panne : on prend l'autre thème
+        return choix(jour, deja, essai)
+    except Exception as e:
         autre = THEMES[1 - THEMES.index(choix)]
         print(f"{choix.__name__} a échoué ({e}), repli sur {autre.__name__}", file=sys.stderr)
-        photo = autre(jour)
+        return autre(jour, deja, essai)
+
+
+def main():
+    jour = datetime.date.fromisoformat(sys.argv[1]) if len(sys.argv) > 1 else datetime.date.today()
+    calendrier = json.loads(CALENDRIER.read_text()) if CALENDRIER.exists() else {}
+    if jour.isoformat() in calendrier:
+        photo = calendrier[jour.isoformat()]
+    else:
+        print(f"{jour} absent du calendrier : choix en direct, sans vérification à l'œil. "
+              "Relancer scripts/calendrier.py.", file=sys.stderr)
+        photo = choisir(jour)
     photo["jour"] = jour.isoformat()
     SORTIE.parent.mkdir(exist_ok=True)
     SORTIE.write_text(json.dumps(photo, ensure_ascii=False, indent=2) + "\n")

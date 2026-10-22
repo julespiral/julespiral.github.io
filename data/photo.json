@@ -1,13 +1,13 @@
 {
   "theme": "art",
-  "titre": "Water Lily Pond",
-  "auteur": "Claude Monet",
-  "date": "1900",
+  "titre": "Kasumigaseki, from the series \"One Hundred Famous Views of Edo (Meisho Edo hyakkei)\"",
+  "auteur": "Utagawa Hiroshige",
+  "date": "1857",
   "licence": "CC0",
-  "image": "https://www.artic.edu/iiif/2/8534685d-1102-e1e3-e194-94f6e925e8b0/full/843,/0/default.jpg",
-  "lien": "https://www.artic.edu/artworks/87088",
+  "image": "https://www.artic.edu/iiif/2/d4c44e5e-d91b-5569-abb2-164009c44783/full/843,/0/default.jpg",
+  "lien": "https://www.artic.edu/artworks/127387",
   "source": "Art Institute of Chicago",
-  "largeur": 5448,
-  "hauteur": 4845,
+  "largeur": 2007,
+  "hauteur": 3000,
   "jour": "2026-10-22"
 }
