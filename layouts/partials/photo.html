@@ -3,14 +3,6 @@
 {{- $fr := eq site.Language.Lang "fr" }}
 <figure class="photo-du-jour">
   <a href="{{ .lien }}" target="_blank" rel="noopener"><img src="{{ .image }}" alt="{{ .titre }}" decoding="async" onerror="this.closest('figure').remove()"></a>
-  <figcaption>
-    <span class="etiquette">{{ if $fr }}Voici l'image du jour, ne soyez pas critique, je la découvre en même temps que vous…{{ else }}Here is today's picture. Don't judge, I'm discovering it at the same time as you…{{ end }}</span>
-    <a href="{{ .lien }}" target="_blank" rel="noopener"><em>{{ .titre }}</em></a>
-    {{- $credit := slice }}
-    {{- with .auteur }}{{ $credit = $credit | append . }}{{ end }}
-    {{- with .date }}{{ $credit = $credit | append . }}{{ end }}
-    {{- with .licence }}{{ $credit = $credit | append (cond (and $fr (eq . "Domaine public")) . (cond (eq . "Domaine public") "Public domain" .)) }}{{ end }}
-    <span class="credit">{{ delimit $credit ", " }}</span>
-  </figcaption>
+  <figcaption>{{ if $fr }}Voici l'image du jour, ne soyez pas critique, je la découvre en même temps que vous…{{ else }}Here is today's picture. Don't judge, I'm discovering it at the same time as you…{{ end }}</figcaption>
 </figure>
 {{- end }}

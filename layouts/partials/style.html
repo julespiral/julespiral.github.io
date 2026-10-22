@@ -35,11 +35,8 @@ li::marker { color: var(--accent); }
 /* Image du jour : petit carré recadré dans un cadre vert ; la légende apparaît au survol, au-dessus de l'image */
 .photo-du-jour { position: relative; width: 150px; margin: 2em 0 0 0; }
 .photo-du-jour img { display: block; width: 150px; height: 150px; object-fit: cover; border-radius: 0; border: 2px solid var(--accent); box-sizing: border-box; }
-.photo-du-jour figcaption { position: absolute; bottom: calc(100% + 6px); left: 0; text-align: justify; hyphens: auto; z-index: 20; width: 240px; padding: 0.5em 0.65em; background: var(--bg); border: 1px solid var(--accent); font-size: 0.75rem; line-height: 1.45; color: var(--muted); opacity: 0; visibility: hidden; transition: opacity 0.15s; }
+.photo-du-jour figcaption { position: absolute; bottom: calc(100% + 6px); left: 0; text-align: justify; hyphens: auto; z-index: 20; width: 240px; padding: 0.5em 0.65em; background: var(--bg); border: 1px solid var(--accent); font-size: 0.8rem; line-height: 1.45; color: var(--fg); opacity: 0; visibility: hidden; transition: opacity 0.15s; }
 .photo-du-jour:hover figcaption, .photo-du-jour:focus-within figcaption { opacity: 1; visibility: visible; }
-.photo-du-jour figcaption > * { display: block; }
-.photo-du-jour .etiquette { color: var(--accent); font-style: italic; font-size: 0.75rem; margin-bottom: 0.35em; }
-.photo-du-jour figcaption a { color: var(--fg); }
 @media screen and (min-width:1280px) {
   /* centré dans le panneau de droite (le texte occupe 680 px au milieu de la fenêtre) */
   .photo-du-jour { position: fixed; top: 50%; left: calc(75vw + 170px); margin: 0; transform: translate(-50%, -50%); }
