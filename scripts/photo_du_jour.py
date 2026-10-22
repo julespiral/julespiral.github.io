@@ -39,9 +39,9 @@ def nombre(jour, sel, n):
     return int(hashlib.sha256(f"{jour}{sel}".encode()).hexdigest(), 16) % n
 
 
-NASA_SUJETS = ["Hubble galaxy", "Hubble nebula", "Webb nebula", "Webb galaxy", "Blue Marble", "aurora space station",
-               "Saturn Cassini", "Jupiter Juno", "Mars Perseverance panorama", "Apollo Earthrise", "solar dynamics observatory",
-               "comet", "Pillars of Creation", "star cluster", "supernova remnant", "Earth at night"]
+NASA_SUJETS = ["Hubble galaxy", "Hubble nebula", "Carina Nebula", "Orion Nebula", "Andromeda galaxy", "Blue Marble",
+               "aurora space station", "Saturn Cassini", "Jupiter Juno", "Mars Perseverance panorama",
+               "solar dynamics observatory", "comet", "star cluster", "supernova remnant", "Earth at night"]
 # Photos d'événements, de réunions ou de matériel, qu'on ne veut pas en image du jour
 NASA_EXCLUS = re.compile(r"town hall|panel|meeting|press|briefing|conference|ceremony|award|interview|"
                          r"workshop|team|install|cleanroom|mirror|test|visit|chart|graph|diagram|plot|"
@@ -55,31 +55,47 @@ def lisible(url):
         from PIL import Image, ImageStat
     except ImportError:  # sans Pillow, on ne vérifie pas
         return True
-    req = urllib.request.Request(url, headers={"User-Agent": UA})
-    with urllib.request.urlopen(req, timeout=60) as r:
-        im = Image.open(io.BytesIO(r.read())).convert("L")
+    try:
+        req = urllib.request.Request(url, headers={"User-Agent": UA})
+        with urllib.request.urlopen(req, timeout=60) as r:
+            im = Image.open(io.BytesIO(r.read())).convert("L")
+    except Exception:  # image introuvable ou format illisible : on passe à la suivante
+        return False
     c = min(im.size)
     g, h = (im.width - c) // 2, (im.height - c) // 2
     st = ImageStat.Stat(im.crop((g, h, g + c, h + c)).resize((200, 200)))
-    return 35 < st.mean[0] < 215 and st.stddev[0] > 30
+    return 18 < st.mean[0] < 215 and st.stddev[0] > 20
+
+
+def evenement(d):
+    """Photo prise par un photographe sur Terre (conférence, visite, lancement) plutôt qu'une image de l'espace.
+    Les images des télescopes et des sondes n'ont pas de photographe ; celles des astronautes ont une cote « iss »."""
+    if d.get("center") == "HQ" or d["nasa_id"].startswith("NHQ"):
+        return True
+    return bool(d.get("photographer")) and not d["nasa_id"].lower().startswith("iss")
 
 
 def nasa(jour):
     # L'API de l'image astronomique du jour (APOD) ne renvoie plus que le logo de la NASA depuis
     # son déménagement sur science.nasa.gov : on pioche dans la photothèque images.nasa.gov.
-    sujet = NASA_SUJETS[nombre(jour, "sujet", len(NASA_SUJETS))]
-    q = urllib.parse.urlencode({"q": sujet, "media_type": "image", "page_size": 100})
-    items = [o for o in lire(f"https://images-api.nasa.gov/search?{q}")["collection"]["items"]
-             if " " in o["data"][0]["title"] and not NASA_EXCLUS.search(o["data"][0]["title"])
-             and not o["data"][0]["nasa_id"].startswith("NHQ")]  # NHQ : photos d'événements au siège de la NASA
-    depart = nombre(jour, "nasa", len(items))
-    for k in range(25):  # fiche sans JPEG ou image illisible une fois recadrée : on passe à la suivante
-        o = items[(depart + k) % len(items)]
-        d = o["data"][0]
-        fichiers = lire(o["href"])
-        image = next((f for taille in ("~medium.jpg", "~large.jpg", "~orig.jpg") for f in fichiers if f.endswith(taille)), None)
-        if image and lisible(image.replace("http://", "https://")):
-            break
+    base = nombre(jour, "sujet", len(NASA_SUJETS))
+    for i in range(len(NASA_SUJETS)):  # sujet sans image lisible : on essaie le suivant
+        sujet = NASA_SUJETS[(base + i) % len(NASA_SUJETS)]
+        q = urllib.parse.urlencode({"q": sujet, "media_type": "image", "page_size": 100})
+        items = [o for o in lire(f"https://images-api.nasa.gov/search?{q}")["collection"]["items"]
+                 if " " in o["data"][0]["title"] and not NASA_EXCLUS.search(o["data"][0]["title"])
+                 and not evenement(o["data"][0])]
+        depart = nombre(jour, "nasa", len(items)) if items else 0
+        for k in range(min(25, len(items))):  # fiche sans JPEG ou image illisible une fois recadrée : on passe à la suivante
+            o = items[(depart + k) % len(items)]
+            d = o["data"][0]
+            image = next((f for taille in ("~medium.jpg", "~large.jpg", "~orig.jpg")
+                          for f in lire(o["href"]) if f.endswith(taille)), None)
+            if image and lisible(image.replace("http://", "https://")):
+                break
+        else:
+            continue
+        break
     else:
         raise ValueError("pas d'image lisible")
     return {
