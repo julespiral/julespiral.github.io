@@ -43,7 +43,7 @@ NASA_SUJETS = ["Hubble galaxy", "Hubble nebula", "Webb telescope image", "Blue M
                "comet", "Pillars of Creation", "star cluster", "supernova remnant", "Earth at night"]
 # Photos d'événements, de réunions ou de matériel, qu'on ne veut pas en image du jour
 NASA_EXCLUS = re.compile(r"town hall|panel|meeting|press|briefing|conference|ceremony|award|interview|"
-                         r"workshop|team|installation|cleanroom|test|visit|chart|graph|diagram|plot|"
+                         r"workshop|team|install|cleanroom|mirror|test|visit|chart|graph|diagram|plot|"
                          r"president|keynote|address|patch|history|administrator|portrait|logo|poster|previews", re.I)
 
 
@@ -53,7 +53,8 @@ def nasa(jour):
     sujet = NASA_SUJETS[nombre(jour, "sujet", len(NASA_SUJETS))]
     q = urllib.parse.urlencode({"q": sujet, "media_type": "image", "page_size": 100})
     items = [o for o in lire(f"https://images-api.nasa.gov/search?{q}")["collection"]["items"]
-             if " " in o["data"][0]["title"] and not NASA_EXCLUS.search(o["data"][0]["title"])]
+             if " " in o["data"][0]["title"] and not NASA_EXCLUS.search(o["data"][0]["title"])
+             and not o["data"][0]["nasa_id"].startswith("NHQ")]  # NHQ : photos d'événements au siège de la NASA
     o = items[nombre(jour, "nasa", len(items))]
     d = o["data"][0]
     fichiers = lire(o["href"])
