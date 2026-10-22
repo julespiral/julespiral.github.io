@@ -19,7 +19,7 @@ description: Research interests, manuscripts, and research positions of Jules Pi
 ## Presentations
 
 <ul class="refs">
-<li><strong>Piral, J.</strong>, &amp; Foisy, L.-O. M. (2027, January 13–16). <em>Silicon sampling and voting behaviour in Canada: Theory or anarchy?</em> [Paper proposal submitted]. Southern Political Science Association Annual Meeting, St. Pete Beach, FL, United States.</li>
+<li><strong>Piral, J.</strong>, &amp; Foisy, L.-O. M. (2027, January 13–16). <em>Silicon sampling and voting behaviour in Canada: Theory or anarchy?</em> [Paper accepted]. Southern Political Science Association Annual Meeting, St. Pete Beach, FL, United States.</li>
 <li><strong>Piral, J.</strong> (2026, August 24). <em>Introduction to R</em> [Workshop]. Interdisciplinary Methods School (EIOM), Université Laval, Québec City, Canada.</li>
 </ul>
 
