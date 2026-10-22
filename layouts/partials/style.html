@@ -32,16 +32,17 @@ a { color: var(--fg); text-decoration-color: var(--accent); }
 li::marker { color: var(--accent); }
 /* Lien vers la photo, aligné à droite du nom sur l'accueil */
 .home-title { position: relative; }
-/* Image du jour : sous le texte, ou dans la marge de droite sur grand écran */
-.photo-du-jour { margin: 2em 0 0 0; }
-.photo-du-jour img { display: block; max-width: 100%; max-height: 60vh; border-radius: 0; border: 2px solid var(--accent); box-sizing: border-box; }
-.photo-du-jour figcaption { margin-top: 0.5em; font-size: 0.78rem; line-height: 1.45; color: var(--muted); }
+/* Image du jour : petit carré recadré dans un cadre vert ; la légende apparaît au survol */
+.photo-du-jour { position: relative; width: 150px; margin: 2em 0 0 0; }
+.photo-du-jour img { display: block; width: 150px; height: 150px; object-fit: cover; border-radius: 0; border: 2px solid var(--accent); box-sizing: border-box; }
+.photo-du-jour figcaption { position: absolute; top: calc(100% + 6px); left: 0; z-index: 20; width: 240px; padding: 0.5em 0.65em; background: var(--bg); border: 1px solid var(--accent); font-size: 0.75rem; line-height: 1.45; color: var(--muted); opacity: 0; visibility: hidden; transition: opacity 0.15s; }
+.photo-du-jour:hover figcaption, .photo-du-jour:focus-within figcaption { opacity: 1; visibility: visible; }
 .photo-du-jour figcaption > * { display: block; }
-.photo-du-jour .etiquette { color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.7rem; }
+.photo-du-jour .etiquette { color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.68rem; }
 .photo-du-jour figcaption a { color: var(--fg); }
 @media screen and (min-width:1280px) {
-  .photo-du-jour { position: fixed; top: 64px; right: 20px; margin: 0; width: min(340px, calc((100vw - 680px) / 2 - 60px)); }
-  .photo-du-jour img { max-height: calc(100vh - 230px); }
+  .photo-du-jour { position: fixed; top: 64px; right: 20px; margin: 0; }
+  .photo-du-jour figcaption { left: auto; right: 0; }
 }
 /* Logos de contact en haut à droite, en miroir du menu */
 .contact { position: absolute; top: 20px; right: 20px; display: flex; gap: 0.9em; }
