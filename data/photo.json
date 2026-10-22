@@ -1,13 +1,13 @@
 {
-  "theme": "nasa",
-  "titre": "Coffee and Cream Clouds",
-  "auteur": "NASA/JPL/Space Science Institute",
-  "date": "2010-09-15",
-  "licence": "Domaine public",
-  "image": "https://images-assets.nasa.gov/image/PIA12721/PIA12721~orig.jpg",
-  "lien": "https://images.nasa.gov/details/PIA12721",
-  "source": "NASA Image and Video Library",
-  "largeur": 0,
-  "hauteur": 0,
+  "theme": "art",
+  "titre": "Water Lily Pond",
+  "auteur": "Claude Monet",
+  "date": "1900",
+  "licence": "CC0",
+  "image": "https://www.artic.edu/iiif/2/8534685d-1102-e1e3-e194-94f6e925e8b0/full/843,/0/default.jpg",
+  "lien": "https://www.artic.edu/artworks/87088",
+  "source": "Art Institute of Chicago",
+  "largeur": 5448,
+  "hauteur": 4845,
   "jour": "2026-10-22"
 }
