@@ -2,7 +2,8 @@
 
 Le thème alterne d'un jour à l'autre :
     0. photo de l'espace (photothèque images.nasa.gov)
-    1. art abstrait (motifs géométriques de l'Art Institute of Chicago, ou Wikimedia Commons : Kandinsky, Mondrian, Klee, Hilma af Klint, Malevitch…), sans nus ni œuvres figuratives
+    1. art, sans nus : deux fois sur trois une peinture de l'Art Institute of Chicago, sinon de l'art abstrait
+       (motifs géométriques de l'Art Institute, ou Wikimedia Commons : Kandinsky, Mondrian, Klee, Hilma af Klint, Malevitch…)
 Si une source échoue, on prend l'autre. Le choix dépend seulement de la date.
 Lancé chaque matin par .github/workflows/photo-du-jour.yml ; à la main :
     python3 scripts/photo_du_jour.py [AAAA-MM-JJ] [nasa|art]
@@ -166,8 +167,8 @@ def geometrique(jour):
                      {"terms": {"classification_titles.keyword": ["painting", "oil on canvas", "textile", "weaving",
                                                                   "weaving - coverlet", "coverlet", "quilt", "tunic",
                                                                   "tapestry", "rug", "carpet", "blanket"]}}],
-            "must_not": [{"terms": {"subject_titles.keyword": ["portraits", "nudes", "women", "men", "figures", "children",
-                                                                "religion", "saints"]}},
+            "must_not": [{"terms": {"subject_titles.keyword": ["portraits", "women", "men", "figures", "children",
+                                                                "religion", "saints"] + SUJETS_NUS}},
                          ]}},
         "fields": ["id", "title", "artist_title", "date_display", "image_id", "thumbnail"],
         "limit": 100,
@@ -197,7 +198,61 @@ def geometrique(jour):
     }
 
 
+# Nus : sujets étiquetés par l'Art Institute, et titres des thèmes classiques qui en montrent souvent
+SUJETS_NUS = ["nudes", "nudity", "bathers", "bathing", "bath", "Venus"]
+TITRES_NUS = re.compile(r"nude|naked|bather|baign|bath|venus|vénus|nymph|eve\b|adam|leda|danae|danaë|susanna|suzanne|"
+                        r"odalis|toilet|psyche|andromeda|diana|bacchan|satyr|graces|sebastian|judith|lucretia|cleopatra|"
+                        r"sleeping|dormeuse|amor|cupid|venere|galatea|europa|\bjob\b|jerome|jérôme|penitent|pénitent|magdalen|"
+                        r"madeleine|flagellation|bathsheba|samson|hercules|prometheus|mars and", re.I)
+
+
+def peinture(jour):
+    """Peinture du domaine public de l'Art Institute of Chicago, de toutes les époques, sans nus."""
+    requete = {
+        "query": {"bool": {
+            "must": [{"term": {"is_public_domain": True}}, {"exists": {"field": "image_id"}},
+                     {"term": {"artwork_type_title.keyword": "Painting"}}],
+            "must_not": [{"terms": {"subject_titles.keyword": SUJETS_NUS}}]}},
+        "fields": ["id", "title", "artist_title", "date_display", "image_id", "thumbnail"],
+        "limit": 100,
+        "page": 1 + nombre(jour, "page", 10),  # l'API refuse au-delà des 1000 premiers résultats
+    }
+    j = lire("https://api.artic.edu/api/v1/artworks/search", json.dumps(requete).encode())
+    oeuvres = sorted((o for o in j["data"] if not TITRES_NUS.search(o["title"])), key=lambda o: o["id"])
+    depart = nombre(jour, "peinture", len(oeuvres))
+    for k in range(min(25, len(oeuvres))):
+        o = oeuvres[(depart + k) % len(oeuvres)]
+        image = f"{j['config']['iiif_url']}/{o['image_id']}/full/843,/0/default.jpg"
+        if lisible(image):
+            break
+    else:
+        raise ValueError("pas de peinture lisible")
+    t = o.get("thumbnail") or {}
+    return {
+        "theme": "art",
+        "titre": o["title"],
+        "auteur": o.get("artist_title") or "",
+        "date": o.get("date_display") or "",
+        "licence": "CC0",
+        "image": image,
+        "lien": f"https://www.artic.edu/artworks/{o['id']}",
+        "source": "Art Institute of Chicago",
+        "largeur": t.get("width", 0),
+        "hauteur": t.get("height", 0),
+    }
+
+
 def art(jour):
+    """Deux jours sur trois une peinture de l'Art Institute, un jour sur trois une œuvre abstraite."""
+    if nombre(jour, "melange", 3):
+        try:
+            return peinture(jour)
+        except Exception:
+            pass
+    return abstrait(jour)
+
+
+def abstrait(jour):
     """Art abstrait du domaine public ou sous licence libre (Wikimedia Commons), sans nus."""
     api = "https://commons.wikimedia.org/w/api.php?"
     base = nombre(jour, "categorie", len(ABSTRAIT))
