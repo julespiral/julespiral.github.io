@@ -2,8 +2,8 @@
 
 Le thème alterne d'un jour à l'autre :
     0. photo de l'espace (photothèque images.nasa.gov)
-    1. art, sans nus : deux fois sur trois une peinture de l'Art Institute of Chicago, sinon de l'art abstrait
-       (motifs géométriques de l'Art Institute, ou Wikimedia Commons : Kandinsky, Mondrian, Klee, Hilma af Klint, Malevitch…)
+    1. art de l'Art Institute of Chicago, sans nus : deux fois sur trois une peinture du domaine public,
+       sinon des motifs géométriques (peintures et textiles)
 Si une source échoue, on prend l'autre. Le choix dépend seulement de la date.
 Lancé chaque matin par .github/workflows/photo-du-jour.yml ; à la main :
     python3 scripts/photo_du_jour.py [AAAA-MM-JJ] [nasa|art]
@@ -113,48 +113,12 @@ def nasa(jour):
     }
 
 
-# Grands noms de l'abstraction, morts avant 1960 : leurs œuvres sont dans le domaine public
-ABSTRAIT = ["Abstract paintings by Wassily Kandinsky", "Abstract paintings by Piet Mondrian", "Abstract paintings by Paul Klee",
-            "Paintings by Hilma af Klint", "Suprematist paintings by Kazimir Malevich", "Suprematist paintings by Lyubov Popova",
-            "Paintings by Robert Delaunay", "Abstract paintings by Theo van Doesburg",
-            "Paintings by Arthur G. Dove", "AIC", "AIC"]  # AIC : motifs géométriques de l'Art Institute (deux parts)
-NU = re.compile(r"nude|naked|nudity|bather|baigneu|akt\b|\bnu\b|\bnus\b|erotic", re.I)
-# Photos de salles d'exposition ou de ventes plutôt que de l'œuvre elle-même
-SALLE = re.compile(r"exhibition|ausstellung|exposition|auction|museum|musée|museo|galerie|gallery|installation|vitrine|"
-                   r"by shakko|\(GRM\)|visitors|hall\b|room\b", re.I)
-# Hilma af Klint a aussi peint des portraits et des paysages : on ne garde que ses séries abstraites
-KLINT = re.compile(r"seri|group|untitled|sans titre|altar|ten largest|tio största|swan|svan|dove|duvan|tree of knowledge|"
-                   r"evolution|primordial|urkaos|wu\b|rose|standpoint|parsifal|atom|buddha|temple|nr|no\.", re.I)
-# Œuvres figuratives des mêmes peintres (af Klint et Delaunay ont aussi peint des fermes et des portraits)
-FIGURATIF = re.compile(r"portrait of|portrait de|farm|landscape|paysage|still life|nature morte|flower|fleur|"
-                       r"woman|femme|girl|man with|homme|portrait|\bp \d+|page|book|livre", re.I)
-
-
-def champ(h):
-    """Nettoie un champ de Commons : retire les blocs Wikidata cachés et garde la version anglaise s'il y en a une."""
-    h = re.sub(r'<div style="display: ?none;?">.*?</div>', "", h or "", flags=re.S)
-    h = re.sub(r'<span class="language[^"]*"[^>]*>.*?</span>', "", h, flags=re.S)
-    en = re.search(r'lang="en"[^>]*>(.*?)</div>', h, flags=re.S)
-    if en:
-        return texte(en.group(1))
-    autre = re.search(r'lang="[a-z-]+"[^>]*>(.*?)</div>', h, flags=re.S)
-    t = texte(autre.group(1) if autre else h)
-    double = re.fullmatch(r"(.+?)\s*\1", t)  # « Unknown authorUnknown author »
-    return double.group(1) if double else t
-
-
-def fichiers(categorie):
-    api = "https://commons.wikimedia.org/w/api.php?"
-    p = {"action": "query", "list": "categorymembers", "cmtitle": f"Category:{categorie}", "cmtype": "file",
-         "cmlimit": 500, "format": "json"}
-    noms = []
-    while True:
-        j = lire(api + urllib.parse.urlencode(p))
-        noms += [m["title"] for m in j["query"]["categorymembers"]]
-        if "continue" not in j:
-            return sorted(n for n in noms if re.search(r"\.(jpe?g|png|tiff?)$", n, re.I) and not NU.search(n) and not SALLE.search(n)
-                          and not FIGURATIF.search(n))
-        p["cmcontinue"] = j["continue"]["cmcontinue"]
+# Nus : sujets étiquetés par l'Art Institute, et titres des thèmes classiques qui en montrent souvent
+SUJETS_NUS = ["nudes", "nudity", "bathers", "bathing", "bath", "Venus"]
+TITRES_NUS = re.compile(r"nude|naked|bather|baign|bath|venus|vénus|nymph|eve\b|adam|leda|danae|danaë|susanna|suzanne|"
+                        r"odalis|toilet|psyche|andromeda|diana|bacchan|satyr|graces|sebastian|judith|lucretia|cleopatra|"
+                        r"sleeping|dormeuse|amor|cupid|venere|galatea|europa|\bjob\b|jerome|jérôme|penitent|pénitent|magdalen|"
+                        r"madeleine|flagellation|bathsheba|samson|hercules|prometheus|mars and", re.I)
 
 
 def geometrique(jour):
@@ -174,7 +138,7 @@ def geometrique(jour):
         "limit": 100,
     }
     j = lire("https://api.artic.edu/api/v1/artworks/search", json.dumps(requete).encode())
-    oeuvres = sorted(j["data"], key=lambda o: o["id"])
+    oeuvres = sorted((o for o in j["data"] if not TITRES_NUS.search(o["title"])), key=lambda o: o["id"])
     depart = nombre(jour, "aic", len(oeuvres))
     for k in range(min(25, len(oeuvres))):
         o = oeuvres[(depart + k) % len(oeuvres)]
@@ -196,14 +160,6 @@ def geometrique(jour):
         "largeur": t.get("width", 0),
         "hauteur": t.get("height", 0),
     }
-
-
-# Nus : sujets étiquetés par l'Art Institute, et titres des thèmes classiques qui en montrent souvent
-SUJETS_NUS = ["nudes", "nudity", "bathers", "bathing", "bath", "Venus"]
-TITRES_NUS = re.compile(r"nude|naked|bather|baign|bath|venus|vénus|nymph|eve\b|adam|leda|danae|danaë|susanna|suzanne|"
-                        r"odalis|toilet|psyche|andromeda|diana|bacchan|satyr|graces|sebastian|judith|lucretia|cleopatra|"
-                        r"sleeping|dormeuse|amor|cupid|venere|galatea|europa|\bjob\b|jerome|jérôme|penitent|pénitent|magdalen|"
-                        r"madeleine|flagellation|bathsheba|samson|hercules|prometheus|mars and", re.I)
 
 
 def peinture(jour):
@@ -243,60 +199,12 @@ def peinture(jour):
 
 
 def art(jour):
-    """Deux jours sur trois une peinture de l'Art Institute, un jour sur trois une œuvre abstraite."""
-    if nombre(jour, "melange", 3):
-        try:
-            return peinture(jour)
-        except Exception:
-            pass
-    return abstrait(jour)
-
-
-def abstrait(jour):
-    """Art abstrait du domaine public ou sous licence libre (Wikimedia Commons), sans nus."""
-    api = "https://commons.wikimedia.org/w/api.php?"
-    base = nombre(jour, "categorie", len(ABSTRAIT))
-    if ABSTRAIT[base] == "AIC":
-        try:
-            return geometrique(jour)
-        except Exception:
-            pass
-    for i in range(len(ABSTRAIT)):
-        if ABSTRAIT[(base + i) % len(ABSTRAIT)] == "AIC":
-            continue
-        categorie = ABSTRAIT[(base + i) % len(ABSTRAIT)]
-        noms = fichiers(categorie)
-        if "Hilma" in categorie:
-            noms = [n for n in noms if KLINT.search(n)]
-        depart = nombre(jour, "art", len(noms)) if noms else 0
-        for k in range(min(25, len(noms))):
-            nom = noms[(depart + k) % len(noms)]
-            p = {"action": "query", "titles": nom, "prop": "imageinfo|categories", "iiprop": "url|size|extmetadata",
-                 "iiurlwidth": LARGEUR, "cllimit": 500, "format": "json"}
-            page = next(iter(lire(api + urllib.parse.urlencode(p))["query"]["pages"].values()))
-            if any(NU.search(c["title"]) or FIGURATIF.search(c["title"]) for c in page.get("categories", [])):
-                continue
-            info = page["imageinfo"][0]
-            if lisible(info["thumburl"]):
-                break
-        else:
-            continue
-        break
-    else:
-        raise ValueError("pas d'œuvre lisible")
-    m = info["extmetadata"]
-    return {
-        "theme": "art",
-        "titre": champ(m.get("ObjectName", {}).get("value")) or re.sub(r"\.\w+$", "", nom.removeprefix("File:")),
-        "auteur": champ(m.get("Artist", {}).get("value")),
-        "date": champ(m.get("DateTimeOriginal", {}).get("value"))[:30],
-        "licence": texte(m.get("LicenseShortName", {}).get("value")),
-        "image": info["thumburl"].split("?")[0],
-        "lien": info["descriptionurl"],
-        "source": "Wikimedia Commons",
-        "largeur": info["width"],
-        "hauteur": info["height"],
-    }
+    """Deux jours sur trois une peinture, un jour sur trois des motifs géométriques ; si l'un échoue, l'autre."""
+    sources = [geometrique, peinture] if nombre(jour, "melange", 3) == 0 else [peinture, geometrique]
+    try:
+        return sources[0](jour)
+    except Exception:
+        return sources[1](jour)
 
 
 THEMES = [nasa, art]
