@@ -9,7 +9,6 @@
     {{- $credit := slice }}
     {{- with .auteur }}{{ $credit = $credit | append . }}{{ end }}
     {{- with .date }}{{ $credit = $credit | append . }}{{ end }}
-    {{- $credit = $credit | append .source }}
     {{- with .licence }}{{ $credit = $credit | append (cond (and $fr (eq . "Domaine public")) . (cond (eq . "Domaine public") "Public domain" .)) }}{{ end }}
     <span class="credit">{{ delimit $credit ", " }}</span>
   </figcaption>
