@@ -1,0 +1,34 @@
+# Chaque matin, va chercher l'image du jour (scripts/photo_du_jour.py), l'enregistre dans
+# data/photo.json et redéploie le site. Cloudflare Pages se redéploie tout seul au push ;
+# GitHub Pages doit être relancé à la main, car un push fait avec GITHUB_TOKEN ne déclenche pas d'autre workflow.
+name: Image du jour
+
+on:
+  schedule:
+    - cron: "15 9 * * *"  # 5 h 15 à Montréal en été, 4 h 15 en hiver
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  photo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Chercher l'image du jour
+        env:
+          TZ: America/Toronto
+        run: python3 scripts/photo_du_jour.py
+      - name: Enregistrer et redéployer
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git diff --quiet data/photo.json && exit 0
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/photo.json
+          git commit -m "Image du jour $(TZ=America/Toronto date +%F)"
+          git push
+          gh workflow run pages.yml --ref main

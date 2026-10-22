@@ -32,6 +32,17 @@ a { color: var(--fg); text-decoration-color: var(--accent); }
 li::marker { color: var(--accent); }
 /* Lien vers la photo, aligné à droite du nom sur l'accueil */
 .home-title { position: relative; }
+/* Image du jour : sous le texte, ou dans la marge de droite sur grand écran */
+.photo-du-jour { margin: 2em 0 0 0; }
+.photo-du-jour img { display: block; max-width: 100%; max-height: 60vh; border-radius: 0; }
+.photo-du-jour figcaption { margin-top: 0.5em; font-size: 0.78rem; line-height: 1.45; color: var(--muted); }
+.photo-du-jour figcaption > * { display: block; }
+.photo-du-jour .etiquette { color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.7rem; }
+.photo-du-jour figcaption a { color: var(--fg); }
+@media screen and (min-width:1280px) {
+  .photo-du-jour { position: fixed; top: 64px; right: 20px; margin: 0; width: min(340px, calc((100vw - 680px) / 2 - 60px)); }
+  .photo-du-jour img { max-height: calc(100vh - 230px); }
+}
 /* Logos de contact en haut à droite, en miroir du menu */
 .contact { position: absolute; top: 20px; right: 20px; display: flex; gap: 0.9em; }
 .contact a { display: block; line-height: 0; }
