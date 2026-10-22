@@ -1,0 +1,6 @@
+# Oui à la recherche et aux réponses IA qui citent le site, non à l'entraînement de modèles.
+Content-Signal: search=yes, ai-input=yes, ai-train=no
+User-agent: *
+Allow: /
+
+Sitemap: https://julespiral.com/sitemap.xml
