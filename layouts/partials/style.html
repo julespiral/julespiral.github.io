@@ -41,11 +41,12 @@ li::marker { color: var(--accent); }
 .photo-du-jour .etiquette { color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.68rem; }
 .photo-du-jour figcaption a { color: var(--fg); }
 @media screen and (min-width:1280px) {
-  .photo-du-jour { position: fixed; top: 64px; right: 20px; margin: 0; }
-  .photo-du-jour figcaption { left: auto; right: 0; }
+  /* centré dans le panneau de droite (le texte occupe 680 px au milieu de la fenêtre) */
+  .photo-du-jour { position: fixed; top: 50%; left: calc(75vw + 170px); margin: 0; transform: translate(-50%, -50%); }
+  .photo-du-jour figcaption { left: 50%; transform: translateX(-50%); }
 }
-/* Logos de contact en haut à droite, en miroir du menu */
-.contact { position: absolute; top: 20px; right: 20px; display: flex; gap: 0.9em; }
+/* Logos de contact en bas à gauche, sous le menu ; à la fin de la page sur petit écran */
+.contact { position: fixed; bottom: 20px; left: 40px; display: flex; gap: 0.9em; z-index: 11; }
 .contact a { display: block; line-height: 0; }
 .contact svg { width: 20px; height: 20px; fill: var(--accent); color: var(--accent); }
 .contact a:hover svg { fill: var(--fg); color: var(--fg); }
@@ -129,8 +130,7 @@ nav .lang a { margin-right: 0.6em; }
   nav li.actif a { text-decoration: none; color: var(--accent); }
   nav hr { margin: 0.6em 0 0 0; }
   .photo-link { position: static; display: block; text-align: left; font-size: 0.85rem; margin-top: 0.15em; color: var(--muted); }
-  .page { position: relative; }
-  .contact { top: 0.75em; right: 0; gap: 0.8em; }
+  .contact { position: static; margin-top: 1.6em; gap: 0.8em; }
   .contact svg { width: 19px; height: 19px; }
 }
 @media screen and (max-width:700px) {
