@@ -1,14 +1,11 @@
 """Va chercher l'image du jour et l'écrit dans data/photo.json (lue par partials/photo.html).
 
-Le thème tourne d'un jour à l'autre :
-    0. image du jour de Wikimedia Commons
-    1. photo de la NASA (photothèque images.nasa.gov)
-    2. peinture du domaine public de l'Art Institute of Chicago
-    3. mouvements sociaux (« images de qualité » de Wikimedia Commons)
-Si une source échoue (panne, vidéo au lieu d'une image), on se rabat sur l'image du jour de Commons.
-Le choix dépend seulement de la date : relancer le script le même jour donne la même image.
+Le thème alterne d'un jour à l'autre :
+    0. photo de l'espace (photothèque images.nasa.gov)
+    1. peinture du domaine public de l'Art Institute of Chicago
+Si une source échoue, on prend l'autre. Le choix dépend seulement de la date.
 Lancé chaque matin par .github/workflows/photo-du-jour.yml ; à la main :
-    python3 scripts/photo_du_jour.py [AAAA-MM-JJ] [thème]
+    python3 scripts/photo_du_jour.py [AAAA-MM-JJ] [nasa|art]
 """
 import datetime
 import hashlib
@@ -39,29 +36,6 @@ def texte(h):
 def nombre(jour, sel, n):
     """Nombre entre 0 et n-1 tiré de la date, stable d'une exécution à l'autre."""
     return int(hashlib.sha256(f"{jour}{sel}".encode()).hexdigest(), 16) % n
-
-
-def titre_fichier(nom):
-    return re.sub(r"\.[A-Za-z]+$", "", nom.removeprefix("File:")).replace("_", " ")
-
-
-def commons_du_jour(jour):
-    j = lire(f"https://api.wikimedia.org/feed/v1/wikipedia/en/featured/{jour:%Y/%m/%d}")["image"]
-    larg = j["image"]["width"]
-    image = j["thumbnail"]["source"].split("?")[0]
-    image = re.sub(r"/\d+px-", f"/{min(LARGEUR, larg)}px-", image)
-    return {
-        "theme": "commons",
-        "titre": titre_fichier(j["title"]),
-        "auteur": texte(j.get("artist", {}).get("text") or j.get("artist", {}).get("html")),
-        "date": "",
-        "licence": j.get("license", {}).get("type", ""),
-        "image": image,
-        "lien": j["file_page"],
-        "source": "Wikimedia Commons",
-        "largeur": larg,
-        "hauteur": j["image"]["height"],
-    }
 
 
 NASA_SUJETS = ["Hubble galaxy", "Hubble nebula", "Webb telescope image", "Blue Marble", "aurora space station",
@@ -127,45 +101,7 @@ def art(jour):
     }
 
 
-MOTS = re.compile(r"\b(protests?|protesters?|demonstrations?|demonstrators?|manifestations?|manifestants?|"
-                  r"general strike|grève|march for|march against|march on|rally against|riots?)\b", re.I)
-EXCLUS = re.compile(r"protestant|heel strike|église|church|kirche|rallye", re.I)
-
-
-def mouvements(jour):
-    api = "https://commons.wikimedia.org/w/api.php?"
-    # La recherche de Commons ne connaît pas les mots entiers : on ratisse large, puis on filtre ici.
-    recherche = ("incategory:Quality_images intitle:/.*([Pp]rotest|[Dd]emonstrat|[Mm]anifest|[Ss]trike|"
-                 "[Gg]rève|[Mm]arch|[Rr]ally|[Rr]iot).*/")
-    p = {"action": "query", "list": "search", "srnamespace": 6, "srsearch": recherche, "srlimit": 500, "format": "json"}
-    noms = []
-    while True:  # la recherche rend 500 résultats à la fois
-        j = lire(api + urllib.parse.urlencode(p))
-        noms += [r["title"] for r in j["query"]["search"]]
-        if "continue" not in j:
-            break
-        p["sroffset"] = j["continue"]["sroffset"]
-    noms = sorted(n for n in noms if MOTS.search(n) and not EXCLUS.search(n))
-    nom = noms[nombre(jour, "mouvements", len(noms))]
-    p = {"action": "query", "titles": nom, "prop": "imageinfo", "iiprop": "url|size|extmetadata",
-         "iiurlwidth": LARGEUR, "format": "json"}
-    info = next(iter(lire(api + urllib.parse.urlencode(p))["query"]["pages"].values()))["imageinfo"][0]
-    m = info["extmetadata"]
-    return {
-        "theme": "mouvements",
-        "titre": texte(m.get("ObjectName", {}).get("value")) or titre_fichier(nom),
-        "auteur": texte(m.get("Artist", {}).get("value")),
-        "date": texte(m.get("DateTimeOriginal", {}).get("value"))[:10],
-        "licence": texte(m.get("LicenseShortName", {}).get("value")),
-        "image": info["thumburl"],
-        "lien": info["descriptionurl"],
-        "source": "Wikimedia Commons",
-        "largeur": info["width"],
-        "hauteur": info["height"],
-    }
-
-
-THEMES = [commons_du_jour, nasa, art, mouvements]
+THEMES = [nasa, art]
 
 
 def main():
@@ -175,9 +111,10 @@ def main():
         choix = next(f for f in THEMES if f.__name__ == sys.argv[2])
     try:
         photo = choix(jour)
-    except Exception as e:  # source en panne : on garde quand même une image du jour
-        print(f"{choix.__name__} a échoué ({e}), repli sur Commons", file=sys.stderr)
-        photo = commons_du_jour(jour)
+    except Exception as e:  # source en panne : on prend l'autre thème
+        autre = THEMES[1 - THEMES.index(choix)]
+        print(f"{choix.__name__} a échoué ({e}), repli sur {autre.__name__}", file=sys.stderr)
+        photo = autre(jour)
     photo["jour"] = jour.isoformat()
     SORTIE.parent.mkdir(exist_ok=True)
     SORTIE.write_text(json.dumps(photo, ensure_ascii=False, indent=2) + "\n")
