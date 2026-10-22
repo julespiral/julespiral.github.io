@@ -2,8 +2,8 @@
 
 Le thème alterne d'un jour à l'autre :
     0. photo de l'espace (photothèque images.nasa.gov)
-    1. art de l'Art Institute of Chicago, sans nus : deux fois sur trois une peinture du domaine public,
-       sinon des motifs géométriques (peintures et textiles)
+    1. œuvre du domaine public de l'Art Institute of Chicago (peinture, estampe, dessin, textile, photo ou
+       céramique), sans nus
 Si une source échoue, on prend l'autre. Le choix dépend seulement de la date.
 Lancé chaque matin par .github/workflows/photo-du-jour.yml ; à la main :
     python3 scripts/photo_du_jour.py [AAAA-MM-JJ] [nasa|art]
@@ -118,98 +118,59 @@ def nasa(jour):
     }
 
 
-# Nus : sujets étiquetés par l'Art Institute, et titres des thèmes classiques qui en montrent souvent
-SUJETS_NUS = ["nudes", "nudity", "bathers", "bathing", "bath", "Venus"]
-TITRES_NUS = re.compile(r"nude|naked|bather|baign|bath|venus|vénus|nymph|eve\b|adam|leda|danae|danaë|susanna|suzanne|"
-                        r"odalis|toilet|psyche|andromeda|diana|bacchan|satyr|graces|sebastian|judith|lucretia|cleopatra|"
-                        r"sleeping|dormeuse|amor|cupid|venere|galatea|europa|\bjob\b|jerome|jérôme|penitent|pénitent|magdalen|"
-                        r"madeleine|flagellation|bathsheba|samson|hercules|prometheus|mars and", re.I)
+# Catégories retenues (pas de verre, vases, costumes, sculptures, métal, monnaies, armes, meubles, livres…)
+TYPES = ["Painting", "Print", "Drawing and Watercolor", "Textile", "Photograph", "Ceramics"]
+# Nus : sujets étiquetés par le musée (rarement), et titres qui en annoncent souvent
+SUJETS_NUS = ["nudes", "nudity", "bathers", "bathing", "bath", "Venus", "breasts", "nursing (breast feeding)",
+              "prostitutes", "sex", "toilettes"]
+TITRES_NUS = re.compile(
+    r"nude|naked|nudo|nackt|bather|baign|bath|venus|vénus|nymph|eve\b|adam|leda|danae|danaë|susanna|suzanne|odalis|"
+    r"toilet|psyche|andromeda|diana|bacchan|bacchus|silenus|satyr|faun|graces|sebastian|judith|lucretia|cleopatra|"
+    r"sleeping|dormeuse|amor|cupid|eros\b|venere|galatea|europa|\bjob\b|jerome|jérôme|penitent|pénitent|magdalen|"
+    r"madeleine|flagellation|bathsheba|samson|hercules|prometheus|mars and|apollo|adonis|narcissus|ganymede|endymion|"
+    r"pygmalion|judgment of paris|mermaid|siren|triton|neptune|académie|academy|figure study|study of a (man|woman|figure)|"
+    r"torso|reclining|recumbent|model\b|life study|anatom|écorché|putt[io]|cherub|massacre|bain|baigneuse|toilette", re.I)
 
 
-def geometrique(jour):
-    """Motifs géométriques du domaine public de l'Art Institute of Chicago : peintures et textiles, sans figures humaines."""
-    requete = {
-        "query": {"bool": {
-            "must": [{"term": {"is_public_domain": True}}, {"exists": {"field": "image_id"}},
-                     {"terms": {"subject_titles.keyword": ["geometric", "geometric motif", "lines", "diamond shapes"]}},
-                     # seulement des peintures et des textiles (pas de gravures, de vases ni d'objets)
-                     {"terms": {"classification_titles.keyword": ["painting", "oil on canvas", "textile", "weaving",
-                                                                  "weaving - coverlet", "coverlet", "quilt", "tunic",
-                                                                  "tapestry", "rug", "carpet", "blanket"]}}],
-            "must_not": [{"terms": {"subject_titles.keyword": ["portraits", "women", "men", "figures", "children",
-                                                                "religion", "saints"] + SUJETS_NUS}},
-                         ]}},
-        "fields": ["id", "title", "artist_title", "date_display", "image_id", "thumbnail"],
-        "limit": 100,
-    }
-    j = lire("https://api.artic.edu/api/v1/artworks/search", json.dumps(requete).encode())
-    oeuvres = sorted((o for o in j["data"] if not TITRES_NUS.search(o["title"])), key=lambda o: o["id"])
-    depart = nombre(jour, "aic", len(oeuvres))
-    for k in range(min(25, len(oeuvres))):
-        o = oeuvres[(depart + k) % len(oeuvres)]
-        image = f"{j['config']['iiif_url']}/{o['image_id']}/full/843,/0/default.jpg"
-        if lisible(image, si_refus=True):
-            break
-    else:
-        raise ValueError("pas d'œuvre lisible")
-    t = o.get("thumbnail") or {}
-    return {
-        "theme": "art",
-        "titre": o["title"],
-        "auteur": o.get("artist_title") or "",
-        "date": o.get("date_display") or "",
-        "licence": "CC0",
-        "image": image,
-        "lien": f"https://www.artic.edu/artworks/{o['id']}",
-        "source": "Art Institute of Chicago",
-        "largeur": t.get("width", 0),
-        "hauteur": t.get("height", 0),
-    }
+# Œuvres repérées à la main dans les aperçus (nus que ni les étiquettes ni les titres ne signalent)
+EXCLUES = {250678, 72682}
 
 
-def peinture(jour):
-    """Peinture du domaine public de l'Art Institute of Chicago, de toutes les époques, sans nus."""
-    requete = {
-        "query": {"bool": {
-            "must": [{"term": {"is_public_domain": True}}, {"exists": {"field": "image_id"}},
-                     {"term": {"artwork_type_title.keyword": "Painting"}}],
-            "must_not": [{"terms": {"subject_titles.keyword": SUJETS_NUS}}]}},
-        "fields": ["id", "title", "artist_title", "date_display", "image_id", "thumbnail"],
-        "limit": 100,
-        "page": 1 + nombre(jour, "page", 10),  # l'API refuse au-delà des 1000 premiers résultats
-    }
-    j = lire("https://api.artic.edu/api/v1/artworks/search", json.dumps(requete).encode())
-    oeuvres = sorted((o for o in j["data"] if not TITRES_NUS.search(o["title"])), key=lambda o: o["id"])
-    depart = nombre(jour, "peinture", len(oeuvres))
-    for k in range(min(25, len(oeuvres))):
-        o = oeuvres[(depart + k) % len(oeuvres)]
-        image = f"{j['config']['iiif_url']}/{o['image_id']}/full/843,/0/default.jpg"
-        if lisible(image, si_refus=True):
-            break
-    else:
-        raise ValueError("pas de peinture lisible")
-    t = o.get("thumbnail") or {}
-    return {
-        "theme": "art",
-        "titre": o["title"],
-        "auteur": o.get("artist_title") or "",
-        "date": o.get("date_display") or "",
-        "licence": "CC0",
-        "image": image,
-        "lien": f"https://www.artic.edu/artworks/{o['id']}",
-        "source": "Art Institute of Chicago",
-        "largeur": t.get("width", 0),
-        "hauteur": t.get("height", 0),
-    }
+def aic(requete):
+    return lire("https://api.artic.edu/api/v1/artworks/search", json.dumps(requete).encode())
 
 
 def art(jour):
-    """Deux jours sur trois une peinture, un jour sur trois des motifs géométriques ; si l'un échoue, l'autre."""
-    sources = [geometrique, peinture] if nombre(jour, "melange", 3) == 0 else [peinture, geometrique]
-    try:
-        return sources[0](jour)
-    except Exception:
-        return sources[1](jour)
+    """Œuvre du domaine public de l'Art Institute of Chicago, sans nus.
+    On tire d'abord une catégorie, puis un numéro de fiche au hasard dans cette catégorie, et on prend les œuvres
+    qui suivent ce numéro : l'API plafonne chaque recherche à 1000 résultats, ce détour donne accès à toute la collection."""
+    base = nombre(jour, "type", len(TYPES))
+    for i in range(len(TYPES)):
+        filtre = [{"term": {"is_public_domain": True}}, {"exists": {"field": "image_id"}},
+                  {"term": {"artwork_type_title.keyword": TYPES[(base + i) % len(TYPES)]}}]
+        sans_nus = [{"terms": {"subject_titles.keyword": SUJETS_NUS}}]
+        bornes = [aic({"query": {"bool": {"must": filtre}}, "sort": [{"id": sens}], "limit": 1, "fields": ["id"]})["data"][0]["id"]
+                  for sens in ("asc", "desc")]
+        cible = bornes[0] + nombre(jour, "fiche", bornes[1] - bornes[0] + 1)
+        j = aic({"query": {"bool": {"must": filtre + [{"range": {"id": {"gte": cible}}}], "must_not": sans_nus}},
+                 "sort": [{"id": "asc"}], "limit": 25, "fields": ["id", "title", "artist_title", "date_display", "image_id", "thumbnail"]})
+        for o in j["data"]:
+            image = f"{j['config']['iiif_url']}/{o['image_id']}/full/843,/0/default.jpg"
+            if o["id"] not in EXCLUES and not TITRES_NUS.search(o["title"]) and lisible(image, si_refus=True):
+                t = o.get("thumbnail") or {}
+                return {
+                    "theme": "art",
+                    "titre": o["title"],
+                    "auteur": o.get("artist_title") or "",
+                    "date": o.get("date_display") or "",
+                    "licence": "CC0",
+                    "image": image,
+                    "lien": f"https://www.artic.edu/artworks/{o['id']}",
+                    "source": "Art Institute of Chicago",
+                    "largeur": t.get("width", 0),
+                    "hauteur": t.get("height", 0),
+                }
+    raise ValueError("pas d'œuvre lisible")
 
 
 THEMES = [nasa, art]
