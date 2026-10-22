@@ -5,6 +5,7 @@
     <div class="page">
     <h1{{ with .Params.pdf }} class="home-title"{{ end }}>{{ with .Params.pdf }}{{ $.Title }}<span class="photo-link">(<a href="{{ . }}" download>{{ if eq $.Site.Language.Lang "fr" }}télécharger{{ else }}download{{ end }}</a>)</span>{{ else }}{{ .Title }}{{ end }}</h1>
     {{ .Content }}
+    {{ partial "contact.html" . }}
     </div>
     </main>
 </body>

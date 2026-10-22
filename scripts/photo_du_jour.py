@@ -121,4 +121,5 @@ def main():
     print(json.dumps(photo, ensure_ascii=False, indent=2))
 
 
-main()
+if __name__ == "__main__":
+    main()
