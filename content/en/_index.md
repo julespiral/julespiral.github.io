@@ -12,9 +12,3 @@ My research sits at the intersection of public opinion, activism and climate pol
 - Coordinating the CAPP online panel and designing surveys for the [Datagotchi](https://www.datagotchi.com/) project.
 - Building automated text-analysis tools for the [Vitrine démocratique](https://vitrinedemocratique.com), a public dashboard on Quebec politics.
 - Writing a paper on *silicon sampling* (can LLMs simulate Canadian voters?), submitted for presentation at the Southern Political Science Association meeting in January 2027.
-
-## Contact
-
-The best way to reach me is by email: [jules.piral.1@ulaval.ca](mailto:jules.piral.1@ulaval.ca).
-
-{{< contact >}}
