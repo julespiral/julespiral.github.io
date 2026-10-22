@@ -9,6 +9,7 @@ Lancé chaque matin par .github/workflows/photo-du-jour.yml ; à la main :
 """
 import datetime
 import hashlib
+import io
 import html
 import json
 import re
@@ -38,13 +39,29 @@ def nombre(jour, sel, n):
     return int(hashlib.sha256(f"{jour}{sel}".encode()).hexdigest(), 16) % n
 
 
-NASA_SUJETS = ["Hubble galaxy", "Hubble nebula", "Webb telescope image", "Blue Marble", "aurora space station",
+NASA_SUJETS = ["Hubble galaxy", "Hubble nebula", "Webb nebula", "Webb galaxy", "Blue Marble", "aurora space station",
                "Saturn Cassini", "Jupiter Juno", "Mars Perseverance panorama", "Apollo Earthrise", "solar dynamics observatory",
                "comet", "Pillars of Creation", "star cluster", "supernova remnant", "Earth at night"]
 # Photos d'événements, de réunions ou de matériel, qu'on ne veut pas en image du jour
 NASA_EXCLUS = re.compile(r"town hall|panel|meeting|press|briefing|conference|ceremony|award|interview|"
                          r"workshop|team|install|cleanroom|mirror|test|visit|chart|graph|diagram|plot|"
-                         r"president|keynote|address|patch|history|administrator|portrait|logo|poster|previews", re.I)
+                         r"president|keynote|address|patch|history|administrator|portrait|logo|poster|previews|"
+                         r"Q and A|indicator|first images of|hangout", re.I)
+
+
+def lisible(url):
+    """Vrai si le carré recadré au centre n'est ni presque noir, ni délavé, ni uniforme."""
+    try:
+        from PIL import Image, ImageStat
+    except ImportError:  # sans Pillow, on ne vérifie pas
+        return True
+    req = urllib.request.Request(url, headers={"User-Agent": UA})
+    with urllib.request.urlopen(req, timeout=60) as r:
+        im = Image.open(io.BytesIO(r.read())).convert("L")
+    c = min(im.size)
+    g, h = (im.width - c) // 2, (im.height - c) // 2
+    st = ImageStat.Stat(im.crop((g, h, g + c, h + c)).resize((200, 200)))
+    return 35 < st.mean[0] < 215 and st.stddev[0] > 30
 
 
 def nasa(jour):
@@ -55,12 +72,16 @@ def nasa(jour):
     items = [o for o in lire(f"https://images-api.nasa.gov/search?{q}")["collection"]["items"]
              if " " in o["data"][0]["title"] and not NASA_EXCLUS.search(o["data"][0]["title"])
              and not o["data"][0]["nasa_id"].startswith("NHQ")]  # NHQ : photos d'événements au siège de la NASA
-    o = items[nombre(jour, "nasa", len(items))]
-    d = o["data"][0]
-    fichiers = lire(o["href"])
-    image = next((f for taille in ("~medium.jpg", "~large.jpg", "~orig.jpg") for f in fichiers if f.endswith(taille)), None)
-    if not image:
-        raise ValueError("pas d'image utilisable")
+    depart = nombre(jour, "nasa", len(items))
+    for k in range(25):  # fiche sans JPEG ou image illisible une fois recadrée : on passe à la suivante
+        o = items[(depart + k) % len(items)]
+        d = o["data"][0]
+        fichiers = lire(o["href"])
+        image = next((f for taille in ("~medium.jpg", "~large.jpg", "~orig.jpg") for f in fichiers if f.endswith(taille)), None)
+        if image and lisible(image.replace("http://", "https://")):
+            break
+    else:
+        raise ValueError("pas d'image lisible")
     return {
         "theme": "nasa",
         "titre": d["title"],

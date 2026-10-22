@@ -17,6 +17,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Installer Pillow (vérifie que l'image recadrée n'est pas trop sombre)
+        run: pip install pillow
       - name: Chercher l'image du jour
         env:
           TZ: America/Toronto
