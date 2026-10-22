@@ -133,7 +133,7 @@ TITRES_NUS = re.compile(
 
 
 # Œuvres repérées à la main dans les aperçus (nus que ni les étiquettes ni les titres ne signalent)
-EXCLUES = {250678, 72682}
+EXCLUES = {250678, 72682, 72685}
 
 
 def aic(requete):
