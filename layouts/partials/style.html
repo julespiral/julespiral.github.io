@@ -32,6 +32,9 @@ a { color: var(--fg); text-decoration-color: var(--accent); }
 li::marker { color: var(--accent); }
 /* Lien vers la photo, aligné à droite du nom sur l'accueil */
 .home-title { position: relative; }
+.contact { display: flex; flex-wrap: wrap; gap: 0.4em 1.4em; }
+.contact a { display: inline-flex; align-items: center; gap: 0.4em; }
+.contact svg { width: 1.05em; height: 1.05em; fill: var(--accent); color: var(--accent); flex: none; }
 .photo-link { position: absolute; right: 0; bottom: 0.35em; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-size: 1rem; }
 /* L'étoile de la page courante ne doit pas élargir le menu */
 nav li { position: relative; }

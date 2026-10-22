@@ -16,3 +16,5 @@ My research sits at the intersection of public opinion, activism and climate pol
 ## Contact
 
 The best way to reach me is by email: [jules.piral.1@ulaval.ca](mailto:jules.piral.1@ulaval.ca).
+
+{{< contact >}}

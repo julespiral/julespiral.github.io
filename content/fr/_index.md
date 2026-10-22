@@ -16,3 +16,5 @@ Mes recherches se situent à la rencontre de l'opinion publique, de l'activisme 
 ## Contact
 
 Le plus simple est de m'écrire à [jules.piral.1@ulaval.ca](mailto:jules.piral.1@ulaval.ca).
+
+{{< contact >}}
