@@ -21,7 +21,7 @@ disableKinds = ['taxonomy', 'term', 'RSS']
     contentDir = 'content/en'
     weight = 1
     [languages.en.params]
-      description = 'Jules Piral, M.A. student in political science at Université Laval. Public opinion, activism, climate politics, and large language models.'
+      description = 'I am an M.A. student in political science at Université Laval.'
     [[languages.en.menus.main]]
       name = 'Home'
       pageRef = '/'
@@ -45,7 +45,7 @@ disableKinds = ['taxonomy', 'term', 'RSS']
     contentDir = 'content/fr'
     weight = 2
     [languages.fr.params]
-      description = "Jules Piral, étudiant à la maîtrise en science politique à l'Université Laval. Opinion publique, activisme, politique climatique et grands modèles de langage."
+      description = "Je suis étudiant à la maîtrise en science politique à l'Université Laval."
     [[languages.fr.menus.main]]
       name = 'Accueil'
       pageRef = '/'
