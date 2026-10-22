@@ -20,6 +20,7 @@ description: Thèmes de recherche, manuscrits et expérience de recherche de Jul
 ## Communications
 
 <ul class="refs">
+<li><strong>Piral, J.</strong>, Pelletier, C. et Foisy, L.-O. M. (2027, 1<sup>er</sup>–4 avril). <em>Afraid of losing the referendum? Immigration preferences among sovereignists and federalists in Quebec</em> [Proposition de communication soumise]. Congrès annuel de la Midwest Political Science Association, Chicago, Illinois, États-Unis.</li>
 <li><strong>Piral, J.</strong> et Foisy, L.-O. M. (2027, 13–16 janvier). <em>Silicon sampling and voting behaviour in Canada: Theory or anarchy?</em> [Communication acceptée]. Congrès annuel de la Southern Political Science Association, St. Pete Beach, Floride, États-Unis.</li>
 <li><strong>Piral, J.</strong> (2026, 24 août). <em>Introduction à R</em> [Atelier]. École interdisciplinaire outils et méthodes (EIOM), Université Laval, Québec, Canada.</li>
 </ul>
