@@ -1,13 +1,13 @@
 {
-  "theme": "nasa",
-  "titre": "First Touchdown Site of Comet Lander",
-  "auteur": "Copyright: ESA/Rosetta/OSIRIS/MPS/UPD/LAM/IAA/SSO/INTA/UPM/DASP/IDA",
-  "date": "2014-11-13",
-  "licence": "Domaine public",
-  "image": "https://images-assets.nasa.gov/image/PIA18875/PIA18875~medium.jpg",
-  "lien": "https://images.nasa.gov/details/PIA18875",
-  "source": "NASA Image and Video Library",
-  "largeur": 0,
-  "hauteur": 0,
-  "jour": "2026-10-23"
+  "theme": "art",
+  "titre": "The Angel of Death",
+  "auteur": "Evelyn De Morgan",
+  "date": "1885",
+  "licence": "CC0",
+  "image": "https://www.artic.edu/iiif/2/364e7420-cad4-d6f2-6dd5-164d5588f059/full/843,/0/default.jpg",
+  "lien": "https://www.artic.edu/artworks/250687",
+  "source": "Art Institute of Chicago",
+  "largeur": 5680,
+  "hauteur": 6860,
+  "jour": "2026-10-24"
 }
