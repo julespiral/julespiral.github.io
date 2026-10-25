@@ -1,13 +1,13 @@
 {
-  "theme": "art",
-  "titre": "The Angel of Death",
-  "auteur": "Evelyn De Morgan",
-  "date": "1885",
-  "licence": "CC0",
-  "image": "https://www.artic.edu/iiif/2/364e7420-cad4-d6f2-6dd5-164d5588f059/full/843,/0/default.jpg",
-  "lien": "https://www.artic.edu/artworks/250687",
-  "source": "Art Institute of Chicago",
-  "largeur": 5680,
-  "hauteur": 6860,
-  "jour": "2026-10-24"
+  "theme": "nasa",
+  "titre": "At the centre of the tuning fork",
+  "auteur": "NASA (GSFC)",
+  "date": "2015-11-02",
+  "licence": "Domaine public",
+  "image": "https://images-assets.nasa.gov/image/a-galaxy-at-the-center-of-the-hubble-tuning-fork_22206278923_o/a-galaxy-at-the-center-of-the-hubble-tuning-fork_22206278923_o~orig.jpg",
+  "lien": "https://images.nasa.gov/details/a-galaxy-at-the-center-of-the-hubble-tuning-fork_22206278923_o",
+  "source": "NASA Image and Video Library",
+  "largeur": 0,
+  "hauteur": 0,
+  "jour": "2026-10-25"
 }
