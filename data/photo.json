@@ -1,13 +1,13 @@
 {
-  "theme": "nasa",
-  "titre": "At the centre of the tuning fork",
-  "auteur": "NASA (GSFC)",
-  "date": "2015-11-02",
-  "licence": "Domaine public",
-  "image": "https://images-assets.nasa.gov/image/a-galaxy-at-the-center-of-the-hubble-tuning-fork_22206278923_o/a-galaxy-at-the-center-of-the-hubble-tuning-fork_22206278923_o~orig.jpg",
-  "lien": "https://images.nasa.gov/details/a-galaxy-at-the-center-of-the-hubble-tuning-fork_22206278923_o",
-  "source": "NASA Image and Video Library",
-  "largeur": 0,
-  "hauteur": 0,
-  "jour": "2026-10-25"
+  "theme": "art",
+  "titre": "Melancholia",
+  "auteur": "Domenico Fetti",
+  "date": "c. 1615",
+  "licence": "CC0",
+  "image": "https://www.artic.edu/iiif/2/73a93ee5-b169-73f4-4db9-6e738eca7fce/full/843,/0/default.jpg",
+  "lien": "https://www.artic.edu/artworks/250762",
+  "source": "Art Institute of Chicago",
+  "largeur": 6251,
+  "hauteur": 8354,
+  "jour": "2026-10-26"
 }
