@@ -1,13 +1,13 @@
 {
-  "theme": "nasa",
-  "titre": "Susitna Glacier, Alaska",
-  "auteur": "NASA (GSFC)",
-  "date": "2017-12-08",
-  "licence": "Domaine public",
-  "image": "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e002000/GSFC_20171208_Archive_e002000~medium.jpg",
-  "lien": "https://images.nasa.gov/details/GSFC_20171208_Archive_e002000",
-  "source": "NASA Image and Video Library",
-  "largeur": 0,
-  "hauteur": 0,
-  "jour": "2026-10-27"
+  "theme": "art",
+  "titre": "Wishes, plate three from A Glove",
+  "auteur": "Max Klinger",
+  "date": "1881",
+  "licence": "CC0",
+  "image": "https://www.artic.edu/iiif/2/142d60d5-86fe-b586-c0ae-5f25ac3fd6db/full/843,/0/default.jpg",
+  "lien": "https://www.artic.edu/artworks/119979",
+  "source": "Art Institute of Chicago",
+  "largeur": 2157,
+  "hauteur": 3000,
+  "jour": "2026-10-28"
 }
