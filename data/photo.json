@@ -1,13 +1,13 @@
 {
-  "theme": "nasa",
-  "titre": "Carina Nebula Detail",
-  "auteur": "NASA (GSFC)",
-  "date": "2017-12-08",
-  "licence": "Domaine public",
-  "image": "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e002152/GSFC_20171208_Archive_e002152~medium.jpg",
-  "lien": "https://images.nasa.gov/details/GSFC_20171208_Archive_e002152",
-  "source": "NASA Image and Video Library",
-  "largeur": 0,
-  "hauteur": 0,
-  "jour": "2026-10-31"
+  "theme": "art",
+  "titre": "The Smolnoi Monastery",
+  "auteur": "Roger Fenton",
+  "date": "1851-52",
+  "licence": "CC0",
+  "image": "https://www.artic.edu/iiif/2/57b5b03d-f894-53b8-eab9-716a0edb5445/full/843,/0/default.jpg",
+  "lien": "https://www.artic.edu/artworks/99447",
+  "source": "Art Institute of Chicago",
+  "largeur": 3168,
+  "hauteur": 2528,
+  "jour": "2026-11-01"
 }
