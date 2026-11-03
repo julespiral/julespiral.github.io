@@ -1,13 +1,13 @@
 {
-  "theme": "nasa",
-  "titre": "Dying Star Shrouded by a Blanket of Hailstones Forms the Bug Nebula",
-  "auteur": "NASA (GSFC)",
-  "date": "2017-12-08",
-  "licence": "Domaine public",
-  "image": "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e002086/GSFC_20171208_Archive_e002086~orig.jpg",
-  "lien": "https://images.nasa.gov/details/GSFC_20171208_Archive_e002086",
-  "source": "NASA Image and Video Library",
-  "largeur": 0,
-  "hauteur": 0,
-  "jour": "2026-11-02"
+  "theme": "art",
+  "titre": "Balaustion",
+  "auteur": "Julia Margaret Cameron",
+  "date": "October 1871",
+  "licence": "CC0",
+  "image": "https://www.artic.edu/iiif/2/b2f9aa0b-5b03-fc9c-b4b0-704b42408f6e/full/843,/0/default.jpg",
+  "lien": "https://www.artic.edu/artworks/150072",
+  "source": "Art Institute of Chicago",
+  "largeur": 1838,
+  "hauteur": 2250,
+  "jour": "2026-11-03"
 }
