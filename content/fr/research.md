@@ -10,6 +10,12 @@ description: Thèmes de recherche, manuscrits et expérience de recherche de Jul
 - Grands modèles de langage en science politique, comme outils de recherche et comme sources de persuasion
 - Politique québécoise et canadienne
 
+## Articles en révision
+
+<ul class="refs">
+<li>Foisy, L.-O. M., Pelletier, C., Proulx, É., Cadieux, H., <strong>Piral, J.</strong>, Temporão, M. et Dufresne, Y. (2026). <em>From Checkbox to Textbox: Can LLM-processed Open-Ended Questions Measure the Same Latent Factors as Traditional Closed-Ended Questions?</em> [En révision (R&amp;R), <em>Political Science Research and Methods</em>].</li>
+</ul>
+
 ## Manuscrits en préparation
 
 <ul class="refs">

@@ -9,6 +9,12 @@ description: Research interests, manuscripts, and research positions of Jules Pi
 - Large language models in political science: as research tools and as sources of persuasion
 - Quebec and Canadian politics
 
+## Articles under review
+
+<ul class="refs">
+<li>Foisy, L.-O. M., Pelletier, C., Proulx, É., Cadieux, H., <strong>Piral, J.</strong>, Temporão, M., &amp; Dufresne, Y. (2026). <em>From Checkbox to Textbox: Can LLM-processed Open-Ended Questions Measure the Same Latent Factors as Traditional Closed-Ended Questions?</em> [Revise and resubmit, <em>Political Science Research and Methods</em>].</li>
+</ul>
+
 ## Manuscripts in preparation
 
 <ul class="refs">
