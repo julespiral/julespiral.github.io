@@ -20,7 +20,7 @@ description: Thèmes de recherche, manuscrits et expérience de recherche de Jul
 
 <ul class="refs">
 <li><strong>Piral, J.</strong>, Foisy, L.-O. M. et Dufresne, Y. (2026). <em>Silicon sampling and voting behaviour in Canada: Theory or anarchy?</em> [Manuscrit en préparation].</li>
-<li>Foisy, L.-O. M., Pelletier, C., Proulx, É., <strong>Piral, J.</strong> et Dufresne, Y. (2026). <em>Language doesn't matter: Evaluating the efficacy of large language models in analyzing sentiment in non-English textual data</em> [Manuscrit en préparation].</li>
+<li>Foisy, L.-O. M., <strong>Piral, J.</strong>, Pelletier, C., Proulx, É., Ménard, A. et Dufresne, Y. (2026). <em>Language doesn't matter: Evaluating the efficacy of large language models in analyzing sentiment in non-English textual data</em> [Manuscrit en préparation].</li>
 </ul>
 
 ## Communications
