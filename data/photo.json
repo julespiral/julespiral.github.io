@@ -1,13 +1,13 @@
 {
-  "theme": "nasa",
-  "titre": "The Infrared Face of the Andromeda Galaxy",
-  "auteur": "NASA/JPL-Caltech",
-  "date": "2024-05-09",
-  "licence": "Domaine public",
-  "image": "https://images-assets.nasa.gov/image/PIA26276/PIA26276~medium.jpg",
-  "lien": "https://images.nasa.gov/details/PIA26276",
-  "source": "NASA Image and Video Library",
-  "largeur": 0,
-  "hauteur": 0,
-  "jour": "2026-11-08"
+  "theme": "art",
+  "titre": "Horrible Murder!",
+  "auteur": "José Guadalupe Posada",
+  "date": "1910",
+  "licence": "CC0",
+  "image": "https://www.artic.edu/iiif/2/f85271eb-e59a-12bd-7adf-ccbe415010bf/full/843,/0/default.jpg",
+  "lien": "https://www.artic.edu/artworks/185412",
+  "source": "Art Institute of Chicago",
+  "largeur": 3028,
+  "hauteur": 2268,
+  "jour": "2026-11-09"
 }
