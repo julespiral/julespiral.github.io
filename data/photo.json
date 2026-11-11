@@ -1,13 +1,13 @@
 {
-  "theme": "nasa",
-  "titre": "Small Prominences",
-  "auteur": "NASA/GSFC/Solar Dynamics Observatory",
-  "date": "2018-12-24",
-  "licence": "Domaine public",
-  "image": "https://images-assets.nasa.gov/image/PIA21212/PIA21212~medium.jpg",
-  "lien": "https://images.nasa.gov/details/PIA21212",
-  "source": "NASA Image and Video Library",
-  "largeur": 0,
-  "hauteur": 0,
-  "jour": "2026-11-10"
+  "theme": "art",
+  "titre": "Christ and the Woman of Samaria",
+  "auteur": "Hans Sebald Beham",
+  "date": "n.d.",
+  "licence": "CC0",
+  "image": "https://www.artic.edu/iiif/2/263c30f9-f61c-4096-c391-082ac8104879/full/843,/0/default.jpg",
+  "lien": "https://www.artic.edu/artworks/80569",
+  "source": "Art Institute of Chicago",
+  "largeur": 3244,
+  "hauteur": 1588,
+  "jour": "2026-11-11"
 }
