@@ -1,13 +1,13 @@
 {
-  "theme": "nasa",
-  "titre": "CTIO Image of Carina Nebula",
-  "auteur": "NASA (GSFC)",
-  "date": "2017-12-08",
-  "licence": "Domaine public",
-  "image": "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e002075/GSFC_20171208_Archive_e002075~medium.jpg",
-  "lien": "https://images.nasa.gov/details/GSFC_20171208_Archive_e002075",
-  "source": "NASA Image and Video Library",
-  "largeur": 0,
-  "hauteur": 0,
-  "jour": "2026-11-12"
+  "theme": "art",
+  "titre": "Plum Blossoms, Crane, and Spring",
+  "auteur": "Xugu",
+  "date": "Qing dynasty ( 1644–1912); 1824–1896; c.1892",
+  "licence": "CC0",
+  "image": "https://www.artic.edu/iiif/2/a237a2df-0ebf-782a-3391-e2276ff051b5/full/843,/0/default.jpg",
+  "lien": "https://www.artic.edu/artworks/47089",
+  "source": "Art Institute of Chicago",
+  "largeur": 5788,
+  "hauteur": 10649,
+  "jour": "2026-11-13"
 }
