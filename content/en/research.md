@@ -19,7 +19,7 @@ description: Research interests, manuscripts, and research positions of Jules Pi
 
 <ul class="refs">
 <li><strong>Piral, J.</strong>, Foisy, L.-O. M., &amp; Dufresne, Y. (2026). <em>Silicon sampling and voting behaviour in Canada: Theory or anarchy?</em> [Manuscript in preparation].</li>
-<li>Foisy, L.-O. M., <strong>Piral, J.</strong>, Pelletier, C., Proulx, É., Ménard, A., &amp; Dufresne, Y. (2026). <em>Prompt language doesn't matter, but keep the original text: Large language models and sentiment analysis in French news</em> [Manuscript in preparation].</li>
+<li>Foisy, L.-O. M., <strong>Piral, J.</strong>, Pelletier, C., Proulx, É., Ménard, A., &amp; Dufresne, Y. (2026). <em>No need to translate? Large language models and sentiment analysis in French-language news</em> [Manuscript in preparation].</li>
 </ul>
 
 ## Presentations
