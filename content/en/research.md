@@ -19,14 +19,16 @@ description: Research interests, manuscripts, and research positions of Jules Pi
 
 <ul class="refs">
 <li><strong>Piral, J.</strong>, Foisy, L.-O. M., &amp; Dufresne, Y. (2026). <em>Silicon sampling and voting behaviour in Canada: Theory or anarchy?</em> [Manuscript in preparation].</li>
-<li>Foisy, L.-O. M., <strong>Piral, J.</strong>, Pelletier, C., Proulx, É., Ménard, A., &amp; Dufresne, Y. (2026). <em>Language doesn't matter: Evaluating the efficacy of large language models in analyzing sentiment in non-English textual data</em> [Manuscript in preparation].</li>
+<li>Foisy, L.-O. M., <strong>Piral, J.</strong>, Pelletier, C., Proulx, É., Ménard, A., &amp; Dufresne, Y. (2026). <em>Prompt language doesn't matter, but keep the original text: Large language models and sentiment analysis in French news</em> [Manuscript in preparation].</li>
 </ul>
 
 ## Presentations
 
 <ul class="refs">
+<li><strong>Piral, J.</strong> (2027, May 26–28). <em>Shaped by silicon? Everyday AI use and public opinion on climate protest</em> [Paper proposal submitted]. Canadian Political Science Association Annual Conference, University of British Columbia, Vancouver, Canada.</li>
 <li><strong>Piral, J.</strong>, Pelletier, C., &amp; Foisy, L.-O. M. (2027, April 1–4). <em>Afraid of losing the referendum? Immigration preferences among sovereignists and federalists in Quebec</em> [Paper proposal submitted]. Midwest Political Science Association Annual Conference, Chicago, IL, United States.</li>
 <li><strong>Piral, J.</strong>, &amp; Foisy, L.-O. M. (2027, January 13–16). <em>Silicon sampling and voting behaviour in Canada: Theory or anarchy?</em> [Paper accepted]. Southern Political Science Association Annual Meeting, St. Pete Beach, FL, United States.</li>
+<li>Foisy, L.-O. M., <strong>Piral, J.</strong>, Pelletier, C., Proulx, É., Ménard, A., &amp; Dufresne, Y. (2026, November 20). <em>No need to translate? Large language models and sentiment analysis in French-language news</em> [Paper presentation]. Colloque du Groupe de recherche en communication politique (GRCP), Université de Montréal, Montréal, Canada. Presenter.</li>
 <li><strong>Piral, J.</strong> (2026, August 24). <em>Introduction to R</em> [Workshop]. Interdisciplinary Methods School (EIOM), Université Laval, Québec City, Canada.</li>
 </ul>
 
