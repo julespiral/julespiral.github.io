@@ -1,13 +1,13 @@
 {
-  "theme": "nasa",
-  "titre": "SDO Transit, September 2015",
-  "auteur": "NASA/GSFC/Solar Dynamics Observatory",
-  "date": "2015-09-13",
-  "licence": "Domaine public",
-  "image": "https://images-assets.nasa.gov/image/PIA19949/PIA19949~medium.jpg",
-  "lien": "https://images.nasa.gov/details/PIA19949",
-  "source": "NASA Image and Video Library",
-  "largeur": 0,
-  "hauteur": 0,
-  "jour": "2026-11-14"
+  "theme": "art",
+  "titre": "The Smuggler's Flight",
+  "auteur": "Eugène Delacroix",
+  "date": "1826",
+  "licence": "CC0",
+  "image": "https://www.artic.edu/iiif/2/28aef7a7-9cba-3bf0-2973-51909861f682/full/843,/0/default.jpg",
+  "lien": "https://www.artic.edu/artworks/94581",
+  "source": "Art Institute of Chicago",
+  "largeur": 3000,
+  "hauteur": 2101,
+  "jour": "2026-11-15"
 }
