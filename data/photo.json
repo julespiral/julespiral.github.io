@@ -1,13 +1,13 @@
 {
-  "theme": "art",
-  "titre": "Ornament Panels with Birds: Plate 6",
-  "auteur": "Adrian Muntink",
-  "date": "1617",
-  "licence": "CC0",
-  "image": "https://www.artic.edu/iiif/2/af6d6fab-097d-ea06-aeaf-84b87f608296/full/843,/0/default.jpg",
-  "lien": "https://www.artic.edu/artworks/128434",
-  "source": "Art Institute of Chicago",
-  "largeur": 1907,
-  "hauteur": 1172,
-  "jour": "2026-11-19"
+  "theme": "nasa",
+  "titre": "Hubble Uncovers a Mysterious Hermit",
+  "auteur": "NASA (GSFC)",
+  "date": "2017-12-08",
+  "licence": "Domaine public",
+  "image": "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e000281/GSFC_20171208_Archive_e000281~orig.jpg",
+  "lien": "https://images.nasa.gov/details/GSFC_20171208_Archive_e000281",
+  "source": "NASA Image and Video Library",
+  "largeur": 0,
+  "hauteur": 0,
+  "jour": "2026-11-20"
 }
