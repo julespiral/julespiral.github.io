@@ -1,13 +1,13 @@
 {
-  "theme": "nasa",
-  "titre": "Hubble Uncovers a Mysterious Hermit",
-  "auteur": "NASA (GSFC)",
-  "date": "2017-12-08",
-  "licence": "Domaine public",
-  "image": "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e000281/GSFC_20171208_Archive_e000281~orig.jpg",
-  "lien": "https://images.nasa.gov/details/GSFC_20171208_Archive_e000281",
-  "source": "NASA Image and Video Library",
-  "largeur": 0,
-  "hauteur": 0,
-  "jour": "2026-11-20"
+  "theme": "art",
+  "titre": "Oyster Plate",
+  "auteur": "Union Porcelain Works",
+  "date": "Patented January 4, 1881",
+  "licence": "CC0",
+  "image": "https://www.artic.edu/iiif/2/9e9a7684-17a1-9326-4a52-fe50ac5cc8e8/full/843,/0/default.jpg",
+  "lien": "https://www.artic.edu/artworks/219945",
+  "source": "Art Institute of Chicago",
+  "largeur": 2883,
+  "hauteur": 2250,
+  "jour": "2026-11-21"
 }
