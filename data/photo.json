@@ -1,13 +1,13 @@
 {
-  "theme": "nasa",
-  "titre": "Rosetta Comet Landing Site Close Up",
-  "auteur": "Copyright: ESA/Rosetta/MPS/UPD/LAM/IAA/SSO/INTA/UPM/DASP/IDA",
-  "date": "2014-10-15",
-  "licence": "Domaine public",
-  "image": "https://images-assets.nasa.gov/image/PIA18827/PIA18827~medium.jpg",
-  "lien": "https://images.nasa.gov/details/PIA18827",
-  "source": "NASA Image and Video Library",
-  "largeur": 0,
-  "hauteur": 0,
-  "jour": "2026-11-22"
+  "theme": "art",
+  "titre": "Untitled (Man in Chair, Profile)",
+  "auteur": "Antoine Samuel Adam-Salomon",
+  "date": "1855/1869",
+  "licence": "CC0",
+  "image": "https://www.artic.edu/iiif/2/31db88da-4edb-962c-689d-1fa89972dccd/full/843,/0/default.jpg",
+  "lien": "https://www.artic.edu/artworks/92144",
+  "source": "Art Institute of Chicago",
+  "largeur": 2441,
+  "hauteur": 3000,
+  "jour": "2026-11-23"
 }
