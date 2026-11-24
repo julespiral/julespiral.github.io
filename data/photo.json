@@ -1,13 +1,13 @@
 {
-  "theme": "art",
-  "titre": "Untitled (Man in Chair, Profile)",
-  "auteur": "Antoine Samuel Adam-Salomon",
-  "date": "1855/1869",
-  "licence": "CC0",
-  "image": "https://www.artic.edu/iiif/2/31db88da-4edb-962c-689d-1fa89972dccd/full/843,/0/default.jpg",
-  "lien": "https://www.artic.edu/artworks/92144",
-  "source": "Art Institute of Chicago",
-  "largeur": 2441,
-  "hauteur": 3000,
-  "jour": "2026-11-23"
+  "theme": "nasa",
+  "titre": "Bright Arcing Loops",
+  "auteur": "NASA/GSFC/Solar Dynamics Observatory",
+  "date": "2016-06-27",
+  "licence": "Domaine public",
+  "image": "https://images-assets.nasa.gov/image/PIA20882/PIA20882~orig.jpg",
+  "lien": "https://images.nasa.gov/details/PIA20882",
+  "source": "NASA Image and Video Library",
+  "largeur": 0,
+  "hauteur": 0,
+  "jour": "2026-11-24"
 }
