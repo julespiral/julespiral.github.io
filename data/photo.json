@@ -1,13 +1,13 @@
 {
-  "theme": "nasa",
-  "titre": "Hubble Eyes Galactic Refurbishment",
-  "auteur": "NASA (GSFC)",
-  "date": "2015-04-30",
-  "licence": "Domaine public",
-  "image": "https://images-assets.nasa.gov/image/hubble-eyes-galactic-refurbishment_17322896925_o/hubble-eyes-galactic-refurbishment_17322896925_o~medium.jpg",
-  "lien": "https://images.nasa.gov/details/hubble-eyes-galactic-refurbishment_17322896925_o",
-  "source": "NASA Image and Video Library",
-  "largeur": 0,
-  "hauteur": 0,
-  "jour": "2026-11-26"
+  "theme": "art",
+  "titre": "Fragment",
+  "auteur": "Chancay",
+  "date": "1000-1476",
+  "licence": "CC0",
+  "image": "https://www.artic.edu/iiif/2/662f26d6-6992-253c-4401-622f7218d0ac/full/843,/0/default.jpg",
+  "lien": "https://www.artic.edu/artworks/46353",
+  "source": "Art Institute of Chicago",
+  "largeur": 3000,
+  "hauteur": 1836,
+  "jour": "2026-11-27"
 }
